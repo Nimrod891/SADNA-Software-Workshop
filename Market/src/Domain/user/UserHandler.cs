@@ -34,18 +34,10 @@ public void printUsers(){
   public void register(string username){
         //TODO acquire this.thread before 
         UserIF user = new User(username, Cart());
-        try{
-            users.add_user(user)
-            permissions.add_permission(user_name, REGISTERED_PERMMISIONS)
+        users.add_user(user);
+        permissions.add_permission(user_name, REGISTERED_PERMMISIONS)
         //TODO release this.thread before 
-        }
-        catch{
-
-            throexcept Exception as e:
-        //TODO release this.thread before 
-            raise e
-        }
-        
+   
   }
 
 }
