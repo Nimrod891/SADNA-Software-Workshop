@@ -20,8 +20,6 @@ private Dictionary<string, UserIF> usersMap; //# key-userName, value - User
 
 public UserHandler(){
  this.usersMap = new Dictionary<string, User>();
- 
-
 }
 
 public void printUsers(){
@@ -35,7 +33,7 @@ public void printUsers(){
         //TODO acquire this.thread before 
         UserIF user = new User(username, Cart());
         users.add_user(user);
-        permissions.add_permission(user_name, REGISTERED_PERMMISIONS)
+        permissions.add_permission(user_name, REGISTERED_PERMMISIONS);
         //TODO release this.thread before 
    
   }
