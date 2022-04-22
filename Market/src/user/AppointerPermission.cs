@@ -25,7 +25,7 @@ public class AppointerPermission : AbsStorePermission
         AbsStorePermission abs; 
         (AppointerPermission)ComputeIfAbsent(pool,ap, new WeakReference(ap)).TryGetTarget(abs);
         if(abs != null) return abs;
-        else throw  ExceptionEditPolicyPermission("editPolicyPermission something was worng");
+        else throw  ExceptionAppointerPermission("AppointerPermission something was worng");
     }
 
     public bool equals(object o) {

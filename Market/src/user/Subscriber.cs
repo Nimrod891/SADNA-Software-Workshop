@@ -227,15 +227,15 @@ public class Subscriber : User {
         removePermissionFromManager(target, store, ManageInventoryPermission.getInstance(store));
     }
 
-    public void addEditPolicyPermission(Subscriber target, Store store) {
+     public void addEditPolicyPermission(Subscriber target, Store store) {
 
-        addPermissionToManager(target, store, EditPolicyPermission.getInstance(store));
+         addPermissionToManager(target, store, EditPolicyPermission.getInstance(store));
     }
 
-    public void removeEditPolicyPermission(Subscriber target, Store store){
+     public void removeEditPolicyPermission(Subscriber target, Store store){
 
-        removePermissionFromManager(target, store, EditPolicyPermission.getInstance(store));
-    }
+         removePermissionFromManager(target, store, EditPolicyPermission.getInstance(store));
+     }
 
     public void addGetHistoryPermission(Subscriber target, Store store) {
 
@@ -320,7 +320,7 @@ public class Subscriber : User {
         return store.getItems().keySet();
     }
 
-    public String storePermissionsToString(Store store) {
+    public string storePermissionsToString(Store store) {
 
         lock (permissions) {
 
@@ -330,7 +330,7 @@ public class Subscriber : User {
             Permission managerPermission = ManagerPermission.getInstance(store);
             Permission manageInventoryPermission = ManageInventoryPermission.getInstance(store);
             Permission getHistoryPermission = GetHistoryPermission.getInstance(store);
-            Permission editPolicyPermission = EditPolicyPermission.getInstance(store);
+            //Permission editPolicyPermission = EditPolicyPermission.getInstance(store);
 
             if (havePermission(ownerPermission))
                 result.Append(ownerPermission.toString()).Append(" ");
@@ -340,8 +340,8 @@ public class Subscriber : User {
                 result.Append(manageInventoryPermission.toString()).Append(" ");
             if (havePermission(getHistoryPermission))
                 result.Append(getHistoryPermission.toString()).Append(" ");
-            if (havePermission(editPolicyPermission))
-                result.Append(editPolicyPermission.toString()).Append(" ");
+            //if (havePermission(editPolicyPermission))
+               // result.Append(editPolicyPermission.toString()).Append(" ");
 
             return result.toString();
         }

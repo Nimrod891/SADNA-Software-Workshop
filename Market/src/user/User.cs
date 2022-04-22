@@ -5,9 +5,11 @@ using externalService;
 using policies;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 public class User {
 
 protected Dictionary<Store, Basket> baskets;
+
     public User() {
        this.baskets = new Dictionary<Store, Basket>();
     }
@@ -34,7 +36,7 @@ protected Dictionary<Store, Basket> baskets;
   
       public Basket getBasket(Store store) {
 
-        return ComputeIfAbsent(this.baskets,store, k =>new Basket(k, new Dictionary<>())); // TODO maybe change after finish basket class
+        return ComputeIfAbsent(this.baskets,store, k =>new Basket(k, new Dictionary<Product,Int64>())); // TODO maybe change after finish basket class
     }
 
 
