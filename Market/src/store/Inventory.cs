@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading
+using System.Threading;
 
+ //this class has functions related to the stcok of a store , item search methods and a caculate method
 public class Inventory  
 {
     private Dictionary<Product, int> products;
