@@ -9,7 +9,7 @@ using System.Collections.Concurrent;
 public class EditPolicyPermission : AbsStorePermission{
 
    private EditPolicyPermission(Store store) {
-        this.store = store;
+        base(store);
    }
 
     public static EditPolicyPermission getInstance(Store store) {

@@ -9,7 +9,7 @@ using System.Collections.Concurrent;
 public class ManageInventoryPermission : AbsStorePermission
 {
     private ManageInventoryPermission(Store store) {
-        this.store = store;
+        base(store);
     }
 
     public static ManageInventoryPermission getInstance(Store store) {

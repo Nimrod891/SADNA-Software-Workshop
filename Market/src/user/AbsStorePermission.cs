@@ -24,7 +24,7 @@ public abstract class AbsStorePermission : AbsPermission {
 
    
     public int GetHashCode() {
-        return base.GetHashCode()*store.GetHashCode();
+        return base.GetType().GetHashCode()+store.GetType().GetHashCode();
     }
 
     

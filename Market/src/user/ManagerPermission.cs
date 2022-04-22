@@ -10,7 +10,7 @@ using System.Collections.Concurrent;
 public class ManagerPermission : AbsStorePermission
 {
     private ManagerPermission(Store store) {
-        this.store = store;
+       base(store);
     }
 
     public static ManagerPermission getInstance(Store store) {

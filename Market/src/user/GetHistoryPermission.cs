@@ -9,7 +9,7 @@ using System.Collections.Concurrent;
 public class GetHistoryPermission : AbsStorePermission
 {
     private GetHistoryPermission(Store store) {
-        this.store = store;
+        base(store);
     }
 
     public static GetHistoryPermission getInstance(Store store) {

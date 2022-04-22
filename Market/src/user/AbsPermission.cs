@@ -18,6 +18,6 @@ public abstract class AbsPermission{
 
     
     public int GetHashCode() {
-        return GetType.GetHashCode();
+        return GetType().GetHashCode();
     }
 }
