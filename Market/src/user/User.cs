@@ -1,5 +1,5 @@
 using System;
-namespace User;
+namespace Userpack;
 using StorePack;
 using externalService;
 using policies;
@@ -55,19 +55,19 @@ protected Dictionary<Store, Basket> baskets;
             if (paymentDone)
                 paymentSystem.payBack(pd);
             // for each store, rollback the basket (return items to inventory)
-            foreach (Dictionary<Store,Basket> entry in baskets)
-                entry.Keys.rollBack(entry.Values.getItems());
+            foreach (Dictionary<Store,Basket>.Enumerator entry in baskets)
+                entry.Current.Key.rollBack(entry.Current.Value.getItems());
             throw e;
         }
         if(totalPrice == 0)
             return;
         // add each purchase details string to the store it was purchased from
-        foreach (Dictionary<Store, String> entry in storePurchaseDetails)
-            entry.Keys.addPurchase(entry.Values);
+        foreach (Dictionary<Store, String>.Enumerator entry in storePurchaseDetails)
+            entry.Current.Key.addPurchase(entry.Values);
 
-        foreach (Dictionary<Store, Basket> storeBasketEntry in baskets) {
-            Store store = storeBasketEntry.Keys;
-            Dictionary<Product,Int64> basket = storeBasketEntry.Values.getItems();
+        foreach (Dictionary<Store, Basket>.Enumerator storeBasketEntry in baskets) {
+            Store store = storeBasketEntry.Current.Key;
+            Dictionary<Product,Int64> basket = storeBasketEntry.Current.Value.getItems();
            // store.notifyPurchase(this, basket);
         }        
         addCartToPurchases(storePurchaseDetails);
@@ -79,17 +79,17 @@ protected Dictionary<Store, Basket> baskets;
         PurchasePolicyIF storePurchasePolicy;
         DiscountPolicyIF storeDiscountPolicy;
 
-        foreach (Dictionary<Store, Basket> storeBasketEntry in baskets)
+        foreach (Dictionary<Store, Basket>.Enumerator storeBasketEntry in baskets)
          {
-            storePurchasePolicy = storeBasketEntry.Keys.getPurchasePolicy();
-            storeDiscountPolicy = storeBasketEntry.Keys.getDiscountPolicy();
-            validPolicy = storePurchasePolicy.isValidPurchase(storeBasketEntry.Values);
+            storePurchasePolicy = storeBasketEntry.Current.Key.getPurchasePolicy();
+            storeDiscountPolicy = storeBasketEntry.Current.Key.getDiscountPolicy();
+            validPolicy = storePurchasePolicy.isValidPurchase(storeBasketEntry.Current.Value);
             if(!validPolicy)
                 throw new PolicyException("policy problem");
 
             StringBuilder purchaseDetails = new StringBuilder();
-            Store store = storeBasketEntry.Keys;
-            Basket basket = storeBasketEntry.Values;
+            Store store = storeBasketEntry.Current.Key;
+            Basket basket = storeBasketEntry.Current.Value;
             double price = store.processBasketAndCalculatePrice(basket, purchaseDetails, storeDiscountPolicy);
             totalPrice += price;
             purchaseDetails.Append("Total basket price: ").Append(price).Append("\n");

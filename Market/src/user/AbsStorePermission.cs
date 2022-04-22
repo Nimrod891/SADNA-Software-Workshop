@@ -1,4 +1,4 @@
-namespace User;
+namespace Userpack;
 using System.Collections.Generic;
 using StorePack;
 
