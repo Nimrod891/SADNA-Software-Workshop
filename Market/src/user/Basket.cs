@@ -1,31 +1,36 @@
 using System;
 using System.Collections.Generic;
-namespace Domain;
-using datalayer;
+namespace User;
+using StorePack;
+using System.Collections.Generic;
+using System.Collections;
+using StorePack;
+using System.Runtime;
+using System;
+using System.Runtime.CompilerServices;
+using System.Collections.Concurrent;
+public record Basket(Store store, ConcurrentDictionary<Product, Int64> products) {
+public Store getStore() {
+        return store;
+    }
 
-public class Basket {
-private Dictionary<int,int> basketMap; //  key-itemId , value-quantity
-public Basket()
-{
-    basketMap = new Dictionary<int, int>();
-}
+    public void addItem(Product p, int quantity) {
+        products.AddOrUpdate(p, (k, v) => v  == null ? quantity : v + quantity); // add to existing quantity
+    }
 
-public void addProductToBasket(int itemId, int quantity){
-    if (quantity <= 0 ) throw new addProductToBasketException("Quantity is lower or equal to 0 .");
-    if (!this.basketMap.ContainsKey(itemId)) this.basketMap.Add(itemId , quantity);
-    else this.basketMap[itemId] += quantity;
-}
+    public int getQuantity(Product p) {
+        return products.getOrDefault(p, 0);
+    }
 
+    public void setQuantity(Product p, int quantity) {
+        products.put(p, quantity);
+    }
 
-public void removeProductToBasket(int itemId, int quantity){
-    if (quantity <= 0  || !this.basketMap.ContainsKey(itemId) ) throw new removeProductToBasketException("worng quantity or itemId .");
-    else this.basketMap[itemId] -= quantity;
-    if (this.basketMap[itemId]<=0)
-        this.basketMap.Remove(itemId);
-}
+    public Dictionary<Product, Int64> getItems() {
+        return products;
+    }
 
-public Dictionary<int,int> getDictionaryBasket(){
-    return basketMap;
-}
-
+    public void removeProduct(Product p) {
+        products.remove(p);
+    }
 }

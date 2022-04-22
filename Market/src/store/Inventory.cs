@@ -1,3 +1,3 @@
-namespace Domain;
+namespace StorePack;
 using System;
 using datalayer;
