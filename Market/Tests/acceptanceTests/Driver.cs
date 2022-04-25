@@ -4,12 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
-
-using StorePack;
-using externalService;
-using policies;
-using tradingSystem;
-using ServiceProxy;
+using acceptanceTests.ServiceProxy;
 
 public class Driver {
 

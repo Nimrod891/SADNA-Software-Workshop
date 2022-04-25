@@ -1,4 +1,8 @@
 namespace acceptanceTests;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+ [TestClass]
 public class AcceptanceTests {
     private static TradingSystemService service;
 
@@ -8,7 +12,6 @@ public class AcceptanceTests {
     private String store1Manager1UserName = "Store1Manager1UserName", store2Manager1UserName = "Store2Manager1UserName", store1FounderUserName = "store1FounderUserName", store2FounderUserName = "store2FounderUserName", subs1UserName = "subs1UserName";
     private int quantityPolicy, basketPolicy, timePolicy, andPolicy, quantityDiscount1, quantityDiscount2, plusDiscount, maxDiscount;
 
-    @BeforeEach
     void setUp() {
         service = Driver.getService("Admin1", "ad123"); //params are details of system manager to register into user authenticator
         admin1Id = service.connect();
