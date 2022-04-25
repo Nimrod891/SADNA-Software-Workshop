@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+namespace StorePack;
+using Userpack;
 
  //this class has functions related to the stcok of a store , item search methods and a caculate method
 public class Inventory  
@@ -29,17 +31,17 @@ public class Inventory
     public void addProduct(string name, double price, string category, int amount)
     {
         if (name == null || name.Equals(""))
-            throw new Exception("item name is illegal");
+            throw addProductException("item name is illegal");
         if (price <= 0)
-            throw new Exception("item price is iilegal");
+            throw addProductException("item price is iilegal");
         if (amount <= 0)
-            throw new Exception("ilegal item amount");
+            throw addProductException("ilegal item amount");
 
         lock (products)
         {
             foreach (Product p in products.Keys)
                 if (scompare(p.ProductName, name) && scompare(p.Category, category))
-                    throw new Exception("item already exists");
+                    throw addProductException("item already exists");
             products.Add(new Product(this.idpatcher, name, price, category, 0), amount);
             idpatcher++;
 
@@ -70,12 +72,26 @@ public class Inventory
         return foundProducts;
     }
 
+
+  /**
+     * This method is used to search the inventory for items that matches the param keyword.
+     * @param keyword - the keyword of the wanted item
+     * @exception ItemNotFoundException - On non existing item with param keyword*/
+    public ICollection<Product> searchItemByKeyWord(string keyword)
+    {
+        ICollection<Product> foundItems = new LinkedList<>();
+        foreach (Product p in this.products.Keys)
+            if(p.getName().ToLower().Contains(keyword.ToLower()) || p.getCategory().ToLower().Contains(keyword.ToLower()) ||
+                    p.getSubCategory().ToLower().Contains(keyword.ToLower()))
+                foundItems.Add(item);
+        return foundItems;
+    }
     public Product searchItem(int itemId)
     {
         foreach (var item in products.Keys)
             if (item.ProductId == itemId)
                 return item;
-        throw new Exception("item not found");
+        throw searchItemException("item not found");
     }
 
     //gives you the list of products by the pricemark
@@ -103,10 +119,14 @@ public class Inventory
         return foundProducts;
     }
 
+     public Dictionary<Prodcut, int> getItems() {
+        return products;
+    }
+
     public void changeQuantity(int itemId, int amount)
     {
         if (amount < 0)
-            throw new Exception("item amount should be 0 or more than that");
+            throw changeQuantityException("item amount should be 0 or more than that");
         products[searchItem(itemId)] = amount;
     }
 
@@ -114,9 +134,9 @@ public class Inventory
     public bool checkAmount(int itemId, int amount)
     {
         if (amount > products[searchItem(itemId)])
-            throw new Exception("there is not enough from the item");
+            throw  checkAmountException("there is not enough from the item");
         if (amount < 0)
-            throw new Exception("amount can't be a negative number");
+            throw checkAmountException("amount can't be a negative number");
         return true;
     }
 
@@ -146,7 +166,7 @@ public class Inventory
                 return;
             }
         }
-        throw new Exception("no item in inventory matching item id");
+        throw  changeItemDetailsException("no item in inventory matching item id");
         // }
     }
 
