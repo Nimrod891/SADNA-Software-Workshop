@@ -1,5 +1,5 @@
 using System;
-namespace Userpack;
+
 using StorePack;
 using externalService;
 using policies;
@@ -12,7 +12,7 @@ using System.Collections.Concurrent;
 using System.Collections;
 using System.Security.Cryptography.RandomNumberGenerator;
 using System.Security.Cryptography.RNGCryptoServiceProvider;
-
+namespace Userpack{
 public class UserAuthentication {
 
     record Record(byte[] salt, string hash) {
@@ -80,5 +80,6 @@ public class UserAuthentication {
     var generated = generator(key);
     dict.Add(key, generated);
     return generated;
+}
 }
 }
