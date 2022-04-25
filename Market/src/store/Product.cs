@@ -1,45 +1,87 @@
 using System;
+namespace StorePack;
+using StorePack;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Runtime;
+using System;
+using System.Runtime.CompilerServices;
+using System.Collections.Concurrent;
+using System.Collections;
 public class Product
 {
-    private int pId;
-    private string pName;
+  private int id;
+    private string name;
     private double price;
     private string category;
-    //private string subcategory
+    private string subCategory;
     private double rating;
-    private bool Opened = true;
-    private ICollection<string> reviews = new LinkedList<string>();
+    private bool isLocked = false;
+    private  ArrayList<Review> reviews = new ArrayList<>();
 
-    public Product(int pid, string name, double price, string category, double rating)
-    {
-        this.pId = pid;
-        this.pName = name;
+    public Item() {}
+
+    public Item(int id, string name, double price, string category, string subCategory, double rating) {
+        this.id = id;
+        this.name = name;
         this.price = price;
         this.category = category;
+        this.subCategory = subCategory;
         this.rating = rating;
     }
-    public Product() { }
 
-    public int ProductId { get => pId; }
+    public int getId() {
+        return id;
+    }
 
-    public string ProductName { get => pName; }
+    public string getName() {
+        return name;
+    }
 
-    public double Price { get => price; set => price = value; }
+    public double getPrice() {
+        return price;
+    }
 
-    public string Category { get => category; }
+    public void setPrice(double price)  {
+        if(price < 0)
+            throw WrongPriceException("item price must be positive");
+        this.price = price;
+    }
 
-    public double Rating { get => rating; set => rating = value; }
+    public String getCategory() {
+        return category;
+    }
 
-    public void lockstore() { this.Opened = false; }
+    public String getSubCategory() {
+        return subCategory;
+    }
 
-    public void openstore() { this.Opened = true; }
+    public void setSubCategory(String newSubCategory){ this.subCategory=newSubCategory;}
 
-    public bool isOpened() { return Opened; }
+    public double getRating() {
+        return rating;
+    }
 
-    public void addReview(string review) { reviews.Add(review); }
+    public void setRating(double rating)  {
+        if(rating < 0)
+            throw WrongRatingException("rating must be positive");
+        this.rating = rating;
+    }
 
-    public ICollection<string> getReviews() { return this.reviews; }
+    public String toString() { return "id:" + id +
+            "\nname:" + name +
+            "\nprice:" + price +
+            "\ncategory:" + category +
+            "\nsub category:" + subCategory +
+            "\nrating:" + rating + '\n';}
+
+    public void lockIt() { isLocked = true; }
+
+    public void unlock() {isLocked = false; }
+
+    public boolean isLocked() {return isLocked; }
+
+    public void addReview(Review review) {reviews.add(review); }
+
+    public CollectionBase<Review> getReviews() {return reviews; }
 }
