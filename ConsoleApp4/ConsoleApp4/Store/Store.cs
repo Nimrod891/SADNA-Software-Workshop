@@ -1,4 +1,5 @@
 using System;
+using System;
 namespace StorePack;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Collections.Concurrent;
 using System.Collections;
-
+namespace StorePack{
 public class Store{
 
     private int id;
@@ -382,3 +383,4 @@ public class Store{
     public void setObservable(Observable observable) { this.observable = observable; }
 
 } */
+}

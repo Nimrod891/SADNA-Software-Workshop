@@ -1,4 +1,5 @@
-namespace policies;
-public abstract class AbsSimpleDiscountPolicy : DiscountPolicyIF {
+namespace policies{
+    public abstract class AbsSimpleDiscountPolicy : DiscountPolicyIF {
 
+    }
 }
