@@ -83,7 +83,7 @@ namespace acceptanceTests{
         void purchaseEmptyCart() {
             setUpStore1Founder();
             assertEquals(0, service.showCart(founderStore1Id).size());
-            assertDoesNotThrow(() -> service.purchaseCart(founderStore1Id));
+            assertDoesNotThrow(() => service.purchaseCart(founderStore1Id));
             assertEquals(0, service.getPurchaseHistory(founderStore1Id).size());
         }
 
@@ -93,7 +93,7 @@ namespace acceptanceTests{
             setUpStore1();
             service.addItemToBasket(founderStore1Id, storeId1, productId1, 2);
             assertEquals(1, service.showCart(founderStore1Id).size());
-            assertDoesNotThrow(() -> service.purchaseCart(founderStore1Id));
+            assertDoesNotThrow(() => service.purchaseCart(founderStore1Id));
             assertEquals(0, service.showCart(founderStore1Id).size());
             assertEquals(1, service.getPurchaseHistory(founderStore1Id).size());
             assertTrue(service.getPurchaseHistory(founderStore1Id).toString().contains("13"));
@@ -106,7 +106,7 @@ namespace acceptanceTests{
             service.addItemToBasket(founderStore1Id, storeId1, productId1, 2);
             service.addItemToBasket(founderStore1Id, storeId2, baguette, 3);
             assertEquals(2, service.showCart(founderStore1Id).size());
-            assertDoesNotThrow(() -> service.purchaseCart(founderStore1Id));
+            assertDoesNotThrow(() => service.purchaseCart(founderStore1Id));
             assertEquals(0, service.showCart(founderStore1Id).size());
             assertEquals(1, service.getPurchaseHistory(founderStore1Id).size());
             assertTrue(service.getPurchaseHistory(founderStore1Id).toString().contains("13") &&
@@ -120,9 +120,9 @@ namespace acceptanceTests{
             service.addItemToBasket(founderStore1Id, storeId1, productId2, 3);
             service.purchaseCart(founderStore1Id);
 
-            assertThrows(NoPermissionException.class, () -> service.getSalesHistoryByStore(store1Manager1Id, storeId1));
-            assertDoesNotThrow(() -> service.allowManagerToGetHistory(founderStore1Id, storeId1, store1Manager1UserName));
-            assertDoesNotThrow(() -> service.getSalesHistoryByStore(store1Manager1Id, storeId1));
+            assertThrows(NoPermissionException, () => service.getSalesHistoryByStore(store1Manager1Id, storeId1));
+            assertDoesNotThrow(() => service.allowManagerToGetHistory(founderStore1Id, storeId1, store1Manager1UserName));
+            assertDoesNotThrow(() => service.getSalesHistoryByStore(store1Manager1Id, storeId1));
             assertEquals(1, service.getSalesHistoryByStore(store1Manager1Id, storeId1).size());
             assertTrue(service.getSalesHistoryByStore(store1Manager1Id, storeId1).toString().contains("milk"));
             assertTrue(service.getSalesHistoryByStore(store1Manager1Id, storeId1).toString().contains("cheese"));
@@ -135,10 +135,10 @@ namespace acceptanceTests{
             setUpSubscriber1();
             validAllowManagerToGetHistory();
 
-            assertThrows(NoPermissionException.class, () ->service.allowManagerToGetHistory(store1Manager1Id, storeId1, store2FounderUserName));
-            assertThrows(SubscriberDoesNotExistException.class, () ->service.allowManagerToGetHistory(store1Manager1Id, storeId1, guest1Id));
-            assertThrows(SubscriberDoesNotExistException.class, () ->service.allowManagerToGetHistory(founderStore1Id, storeId1, guest1Id));
-            assertThrows(NoPermissionException.class, () ->service.allowManagerToGetHistory(store1Manager1Id, storeId1, subs1UserName));
+            assertThrows(NoPermissionException, () =>service.allowManagerToGetHistory(store1Manager1Id, storeId1, store2FounderUserName));
+            assertThrows(SubscriberDoesNotExistException, () =>service.allowManagerToGetHistory(store1Manager1Id, storeId1, guest1Id));
+            assertThrows(SubscriberDoesNotExistException, () =>service.allowManagerToGetHistory(founderStore1Id, storeId1, guest1Id));
+            assertThrows(NoPermissionException, () =>service.allowManagerToGetHistory(store1Manager1Id, storeId1, subs1UserName));
         }
 
 
@@ -147,8 +147,8 @@ namespace acceptanceTests{
             setUpStore1();
             setUpStore2();
 
-            assertDoesNotThrow(() -> service.getStorePolicies(admin1Id, storeId1));
-            assertDoesNotThrow(() -> service.getStorePolicies(admin1Id, storeId2));
+            assertDoesNotThrow(() => service.getStorePolicies(admin1Id, storeId1));
+            assertDoesNotThrow(() => service.getStorePolicies(admin1Id, storeId2));
 
             Collection<String> store1Items = store1Items();
 
@@ -160,19 +160,19 @@ namespace acceptanceTests{
             service.orPolicy(admin1Id, storeId1, quantityPolicy, timePolicy);
             service.xorPolicy(admin1Id, storeId1, basketPolicy, timePolicy);
 
-            assertDoesNotThrow(() -> service.assignStorePurchasePolicy(andPolicy, admin1Id, storeId1));
+            assertDoesNotThrow(() => service.assignStorePurchasePolicy(andPolicy, admin1Id, storeId1));
 
-            assertDoesNotThrow(() -> service.removePolicy(admin1Id, storeId1, quantityPolicy));
-            assertDoesNotThrow(() -> service.removePolicy(admin1Id, storeId1, basketPolicy));
-            assertDoesNotThrow(() -> service.removePolicy(admin1Id, storeId1, andPolicy));
+            assertDoesNotThrow(() => service.removePolicy(admin1Id, storeId1, quantityPolicy));
+            assertDoesNotThrow(() => service.removePolicy(admin1Id, storeId1, basketPolicy));
+            assertDoesNotThrow(() => service.removePolicy(admin1Id, storeId1, andPolicy));
         }
 
         [Test]
         void validAllowToEditDiscountPoliciesByAdmin() {
             validAllowToEditPurchasesPoliciesByAdmin();
 
-            assertDoesNotThrow(() -> service.getStoreDiscounts(admin1Id, storeId1));
-            assertDoesNotThrow(() -> service.getStoreDiscounts(admin1Id, storeId2));
+            assertDoesNotThrow(() => service.getStoreDiscounts(admin1Id, storeId1));
+            assertDoesNotThrow(() => service.getStoreDiscounts(admin1Id, storeId2));
 
             Collection<String> store1Items = store1Items();
 
@@ -182,19 +182,19 @@ namespace acceptanceTests{
             maxDiscount = service.makeMaxDiscount(admin1Id, storeId1, quantityDiscount1, quantityDiscount2);
             plusDiscount = service.makePlusDiscount(admin1Id, storeId1, quantityDiscount1, maxDiscount);
 
-            assertDoesNotThrow(() -> service.assignStoreDiscountPolicy(plusDiscount, admin1Id, storeId1));
+            assertDoesNotThrow(() => service.assignStoreDiscountPolicy(plusDiscount, admin1Id, storeId1));
 
-            assertDoesNotThrow(() -> service.removeDiscount(admin1Id, storeId1, quantityDiscount1));
-            assertDoesNotThrow(() -> service.removeDiscount(admin1Id, storeId1, quantityDiscount2));
-            assertDoesNotThrow(() -> service.removeDiscount(admin1Id, storeId1, maxDiscount));
-            assertDoesNotThrow(() -> service.removeDiscount(admin1Id, storeId1, plusDiscount));
+            assertDoesNotThrow(() => service.removeDiscount(admin1Id, storeId1, quantityDiscount1));
+            assertDoesNotThrow(() => service.removeDiscount(admin1Id, storeId1, quantityDiscount2));
+            assertDoesNotThrow(() => service.removeDiscount(admin1Id, storeId1, maxDiscount));
+            assertDoesNotThrow(() => service.removeDiscount(admin1Id, storeId1, plusDiscount));
         }
 
         [Test]
         void validAllowToEditPurchasePoliciesByStoreOwner() {
             setUpStore1();
 
-            assertDoesNotThrow(() -> service.getStorePolicies(founderStore1Id, storeId1));
+            assertDoesNotThrow(() => service.getStorePolicies(founderStore1Id, storeId1));
 
             Collection<String> store1Items = store1Items();
 
@@ -206,18 +206,18 @@ namespace acceptanceTests{
             service.orPolicy(founderStore1Id, storeId1, quantityPolicy, timePolicy);
             service.xorPolicy(founderStore1Id, storeId1, basketPolicy, timePolicy);
 
-            assertDoesNotThrow(() -> service.assignStorePurchasePolicy(andPolicy, founderStore1Id, storeId1));
+            assertDoesNotThrow(() => service.assignStorePurchasePolicy(andPolicy, founderStore1Id, storeId1));
 
-            assertDoesNotThrow(() -> service.removePolicy(founderStore1Id, storeId1, quantityPolicy));
-            assertDoesNotThrow(() -> service.removePolicy(founderStore1Id, storeId1, basketPolicy));
-            assertDoesNotThrow(() -> service.removePolicy(founderStore1Id, storeId1, andPolicy));
+            assertDoesNotThrow(() => service.removePolicy(founderStore1Id, storeId1, quantityPolicy));
+            assertDoesNotThrow(() => service.removePolicy(founderStore1Id, storeId1, basketPolicy));
+            assertDoesNotThrow(() => service.removePolicy(founderStore1Id, storeId1, andPolicy));
         }
 
         [Test]
         void validAllowToEditDiscountPoliciesByStoreOwner() {
             validAllowToEditPurchasePoliciesByStoreOwner();
 
-            assertDoesNotThrow(() -> service.getStoreDiscounts(founderStore1Id, storeId1));
+            assertDoesNotThrow(() => service.getStoreDiscounts(founderStore1Id, storeId1));
 
             Collection<String> store1Items = store1Items();
 
@@ -227,12 +227,12 @@ namespace acceptanceTests{
             maxDiscount = service.makeMaxDiscount(founderStore1Id, storeId1, quantityDiscount1, quantityDiscount2);
             plusDiscount = service.makePlusDiscount(founderStore1Id, storeId1, quantityDiscount1, maxDiscount);
 
-            assertDoesNotThrow(() -> service.assignStoreDiscountPolicy(plusDiscount, founderStore1Id, storeId1));
+            assertDoesNotThrow(() => service.assignStoreDiscountPolicy(plusDiscount, founderStore1Id, storeId1));
 
-            assertDoesNotThrow(() -> service.removeDiscount(founderStore1Id, storeId1, quantityDiscount1));
-            assertDoesNotThrow(() -> service.removeDiscount(founderStore1Id, storeId1, quantityDiscount2));
-            assertDoesNotThrow(() -> service.removeDiscount(founderStore1Id, storeId1, maxDiscount));
-            assertDoesNotThrow(() -> service.removeDiscount(founderStore1Id, storeId1, plusDiscount));
+            assertDoesNotThrow(() => service.removeDiscount(founderStore1Id, storeId1, quantityDiscount1));
+            assertDoesNotThrow(() => service.removeDiscount(founderStore1Id, storeId1, quantityDiscount2));
+            assertDoesNotThrow(() => service.removeDiscount(founderStore1Id, storeId1, maxDiscount));
+            assertDoesNotThrow(() => service.removeDiscount(founderStore1Id, storeId1, plusDiscount));
         }
 
         [Test]
@@ -240,7 +240,7 @@ namespace acceptanceTests{
             validAllowToEditDiscountPoliciesByStoreOwner();
 
             service.allowManagerToEditPolicies(founderStore1Id, storeId1, store1Manager1UserName);
-            assertDoesNotThrow(() -> service.getStorePolicies(store1Manager1Id, storeId1));
+            assertDoesNotThrow(() => service.getStorePolicies(store1Manager1Id, storeId1));
 
             Collection<String> store1Items = store1Items();
 
@@ -252,11 +252,11 @@ namespace acceptanceTests{
             service.orPolicy(store1Manager1Id, storeId1, quantityPolicy, timePolicy);
             service.xorPolicy(store1Manager1Id, storeId1, basketPolicy, timePolicy);
 
-            assertDoesNotThrow(() -> service.assignStorePurchasePolicy(andPolicy, store1Manager1Id, storeId1));
+            assertDoesNotThrow(() => service.assignStorePurchasePolicy(andPolicy, store1Manager1Id, storeId1));
 
-            assertDoesNotThrow(() -> service.removePolicy(store1Manager1Id, storeId1, quantityPolicy));
-            assertDoesNotThrow(() -> service.removePolicy(store1Manager1Id, storeId1, basketPolicy));
-            assertDoesNotThrow(() -> service.removePolicy(store1Manager1Id, storeId1, andPolicy));
+            assertDoesNotThrow(() => service.removePolicy(store1Manager1Id, storeId1, quantityPolicy));
+            assertDoesNotThrow(() => service.removePolicy(store1Manager1Id, storeId1, basketPolicy));
+            assertDoesNotThrow(() => service.removePolicy(store1Manager1Id, storeId1, andPolicy));
         }
 
         [Test]
@@ -264,7 +264,7 @@ namespace acceptanceTests{
             validAllowToEditDiscountPoliciesByStoreOwner();
 
             service.allowManagerToEditPolicies(founderStore1Id, storeId1, store1Manager1UserName);
-            assertDoesNotThrow(() -> service.getStoreDiscounts(store1Manager1Id, storeId1));
+            assertDoesNotThrow(() => service.getStoreDiscounts(store1Manager1Id, storeId1));
 
             Collection<String> store1Items = store1Items();
 
@@ -274,12 +274,12 @@ namespace acceptanceTests{
             maxDiscount = service.makeMaxDiscount(store1Manager1Id, storeId1, quantityDiscount1, quantityDiscount2);
             plusDiscount = service.makePlusDiscount(store1Manager1Id, storeId1, quantityDiscount1, maxDiscount);
 
-            assertDoesNotThrow(() -> service.assignStoreDiscountPolicy(plusDiscount, store1Manager1Id, storeId1));
+            assertDoesNotThrow(() => service.assignStoreDiscountPolicy(plusDiscount, store1Manager1Id, storeId1));
 
-            assertDoesNotThrow(() -> service.removeDiscount(store1Manager1Id, storeId1, quantityDiscount1));
-            assertDoesNotThrow(() -> service.removeDiscount(store1Manager1Id, storeId1, quantityDiscount2));
-            assertDoesNotThrow(() -> service.removeDiscount(store1Manager1Id, storeId1, maxDiscount));
-            assertDoesNotThrow(() -> service.removeDiscount(store1Manager1Id, storeId1, plusDiscount));
+            assertDoesNotThrow(() => service.removeDiscount(store1Manager1Id, storeId1, quantityDiscount1));
+            assertDoesNotThrow(() => service.removeDiscount(store1Manager1Id, storeId1, quantityDiscount2));
+            assertDoesNotThrow(() => service.removeDiscount(store1Manager1Id, storeId1, maxDiscount));
+            assertDoesNotThrow(() => service.removeDiscount(store1Manager1Id, storeId1, plusDiscount));
         }
 
         [Test]
@@ -287,50 +287,50 @@ namespace acceptanceTests{
             setUpStore1();
             setUpStore2Founder();
 
-            assertThrows(NoPermissionException.class, () -> service.getStorePolicies(store1Manager1Id, storeId1));
-            assertThrows(NoPermissionException.class, () -> service.getStorePolicies(founderStore2Id, storeId1));
+            assertThrows(NoPermissionException, () => service.getStorePolicies(store1Manager1Id, storeId1));
+            assertThrows(NoPermissionException, () => service.getStorePolicies(founderStore2Id, storeId1));
 
             Collection<String> store1Items = store1Items();
 
-            assertThrows(NoPermissionException.class, () -> service.makeQuantityPolicy(founderStore2Id, storeId1, store1Items, 1, 0));
-            assertThrows(NoPermissionException.class, () -> service.makeBasketPurchasePolicy(founderStore2Id, storeId1, 50));
-            assertThrows(NoPermissionException.class, () -> service.makeTimePolicy(founderStore2Id, storeId1, store1Items, "00:00"));
+            assertThrows(NoPermissionException, () => service.makeQuantityPolicy(founderStore2Id, storeId1, store1Items, 1, 0));
+            assertThrows(NoPermissionException, () => service.makeBasketPurchasePolicy(founderStore2Id, storeId1, 50));
+            assertThrows(NoPermissionException, () => service.makeTimePolicy(founderStore2Id, storeId1, store1Items, "00:00"));
 
-            assertThrows(NoPermissionException.class, () -> service.makeQuantityPolicy(store1Manager1Id, storeId1, store1Items, 1, 0));
-            assertThrows(NoPermissionException.class, () -> service.makeBasketPurchasePolicy(store1Manager1Id, storeId1, 50));
-            assertThrows(NoPermissionException.class, () -> service.makeTimePolicy(store1Manager1Id, storeId1, store1Items, "00:00"));
+            assertThrows(NoPermissionException, () => service.makeQuantityPolicy(store1Manager1Id, storeId1, store1Items, 1, 0));
+            assertThrows(NoPermissionException, () => service.makeBasketPurchasePolicy(store1Manager1Id, storeId1, 50));
+            assertThrows(NoPermissionException, () => service.makeTimePolicy(store1Manager1Id, storeId1, store1Items, "00:00"));
 
-            assertThrows(NoPermissionException.class, () -> service.assignStorePurchasePolicy(service.makeQuantityPolicy(store1Manager1Id, storeId1, store1Items, 1, 0), store1Manager1Id, storeId1));
+            assertThrows(NoPermissionException, () => service.assignStorePurchasePolicy(service.makeQuantityPolicy(store1Manager1Id, storeId1, store1Items, 1, 0), store1Manager1Id, storeId1));
 
-            assertThrows(NoPermissionException.class, () -> service.removePolicy(store1Manager1Id, storeId1, 0));
-            assertThrows(NoPermissionException.class, () -> service.removePolicy(store1Manager1Id, storeId1, 0));
-            assertThrows(NoPermissionException.class, () -> service.removePolicy(store1Manager1Id, storeId1, 0));
+            assertThrows(NoPermissionException, () => service.removePolicy(store1Manager1Id, storeId1, 0));
+            assertThrows(NoPermissionException, () => service.removePolicy(store1Manager1Id, storeId1, 0));
+            assertThrows(NoPermissionException, () => service.removePolicy(store1Manager1Id, storeId1, 0));
         }
 
         [Test]
         void notValidAllowManagerOrStoreOwnerToEditDiscounts() {
             notValidAllowManagerOrStoreOwnerToEditPurchases();
 
-            assertThrows(NoPermissionException.class, () -> service.getStoreDiscounts(store1Manager1Id, storeId1));
-            assertThrows(NoPermissionException.class, () -> service.getStoreDiscounts(founderStore2Id, storeId1));
+            assertThrows(NoPermissionException, () => service.getStoreDiscounts(store1Manager1Id, storeId1));
+            assertThrows(NoPermissionException, () => service.getStoreDiscounts(founderStore2Id, storeId1));
 
             Collection<String> store1Items = store1Items();
 
-            assertThrows(NoPermissionException.class, () -> service.makeQuantityDiscount(founderStore2Id, storeId1, 10, store1Items, null));
-            assertThrows(NoPermissionException.class, () -> service.makeQuantityDiscount(founderStore2Id, storeId1, 20, store1Items, null));
+            assertThrows(NoPermissionException, () => service.makeQuantityDiscount(founderStore2Id, storeId1, 10, store1Items, null));
+            assertThrows(NoPermissionException, () => service.makeQuantityDiscount(founderStore2Id, storeId1, 20, store1Items, null));
 
-            assertThrows(NoPermissionException.class, () -> service.makeQuantityDiscount(store1Manager1Id, storeId1, 10, store1Items, null));
-            assertThrows(NoPermissionException.class, () -> service.makeQuantityDiscount(store1Manager1Id, storeId1, 20, store1Items, null));
+            assertThrows(NoPermissionException, () => service.makeQuantityDiscount(store1Manager1Id, storeId1, 10, store1Items, null));
+            assertThrows(NoPermissionException, () => service.makeQuantityDiscount(store1Manager1Id, storeId1, 20, store1Items, null));
 
-            assertThrows(NoPermissionException.class, () -> service.makeMaxDiscount(store1Manager1Id, storeId1, 0, 1));
-            assertThrows(NoPermissionException.class, () -> service.makePlusDiscount(store1Manager1Id, storeId1, 0, 1));
+            assertThrows(NoPermissionException, () => service.makeMaxDiscount(store1Manager1Id, storeId1, 0, 1));
+            assertThrows(NoPermissionException, () => service.makePlusDiscount(store1Manager1Id, storeId1, 0, 1));
 
-            assertThrows(NoPermissionException.class, () -> service.assignStoreDiscountPolicy(2, store1Manager1Id, storeId1));
+            assertThrows(NoPermissionException, () => service.assignStoreDiscountPolicy(2, store1Manager1Id, storeId1));
 
-            assertThrows(NoPermissionException.class, () -> service.removeDiscount(store1Manager1Id, storeId1, 0));
-            assertThrows(NoPermissionException.class, () -> service.removeDiscount(store1Manager1Id, storeId1, 1));
-            assertThrows(NoPermissionException.class, () -> service.removeDiscount(store1Manager1Id, storeId1, 2));
-            assertThrows(NoPermissionException.class, () -> service.removeDiscount(store1Manager1Id, storeId1, 3));
+            assertThrows(NoPermissionException, () => service.removeDiscount(store1Manager1Id, storeId1, 0));
+            assertThrows(NoPermissionException, () => service.removeDiscount(store1Manager1Id, storeId1, 1));
+            assertThrows(NoPermissionException, () => service.removeDiscount(store1Manager1Id, storeId1, 2));
+            assertThrows(NoPermissionException, () => service.removeDiscount(store1Manager1Id, storeId1, 3));
         }
 
         [Test]
@@ -349,7 +349,7 @@ namespace acceptanceTests{
             assertTrue(service.getPurchaseHistory(store1Manager1Id).toString().contains("34"));
 
             service.addItemToBasket(store1Manager1Id, storeId1, tomato, 6);
-            assertThrows(PolicyException.class, () -> service.purchaseCart(store1Manager1Id));
+            assertThrows(PolicyException, () => service.purchaseCart(store1Manager1Id));
             assertFalse(service.getPurchaseHistory(store1Manager1Id).toString().contains("51"));
 
             service.addItemToBasket(guest1Id, storeId1, tomato, 4);
@@ -359,7 +359,7 @@ namespace acceptanceTests{
             assertTrue(goodPurchase.indexOf("34") != goodPurchase.lastIndexOf("34") && goodPurchase.contains("34"));
 
             service.addItemToBasket(guest1Id, storeId1, tomato, 6);
-            assertThrows(PolicyException.class, () -> service.purchaseCart(guest1Id));
+            assertThrows(PolicyException, () => service.purchaseCart(guest1Id));
             assertFalse(service.getSalesHistoryByStore(founderStore1Id, storeId1).toString().contains("51"));
 
         }
@@ -396,11 +396,11 @@ namespace acceptanceTests{
             service.assignStorePurchasePolicy(tomatoAndCornPolicy, founderStore1Id, storeId1);
 
             service.addItemToBasket(store1Manager1Id, storeId1, tomato, 4);
-            assertThrows(QuantityPolicyException.class, () -> service.purchaseCart(store1Manager1Id));
+            assertThrows(QuantityPolicyException, () => service.purchaseCart(store1Manager1Id));
 
             service.addItemToBasket(store1Manager1Id, storeId1, corn, 2);
             service.addItemToBasket(store1Manager1Id, storeId1, tomato, 2);
-            assertThrows(AndPolicyException.class, () -> service.purchaseCart(store1Manager1Id));
+            assertThrows(AndPolicyException, () => service.purchaseCart(store1Manager1Id));
 
             service.updateProductAmountInBasket(store1Manager1Id, storeId1, tomato, 5);
             service.purchaseCart(store1Manager1Id);
@@ -423,7 +423,7 @@ namespace acceptanceTests{
             service.assignStorePurchasePolicy(tomatoAndCornPolicy, founderStore1Id, storeId1);
 
             service.addItemToBasket(store1Manager1Id, storeId1, tomato, 6);
-            assertThrows(QuantityPolicyException.class, () -> service.purchaseCart(store1Manager1Id));
+            assertThrows(QuantityPolicyException, () => service.purchaseCart(store1Manager1Id));
 
             service.addItemToBasket(store1Manager1Id, storeId1, corn, 1);
             service.purchaseCart(store1Manager1Id);
@@ -651,7 +651,7 @@ namespace acceptanceTests{
             service.appointStoreOwner(founderStore1Id, store2FounderUserName, storeId1);
             service.getSalesHistoryByStore(founderStore2Id, storeId1);
             service.removeOwner(founderStore1Id,storeId1, store2FounderUserName);
-            assertThrows(NoPermissionException.class, () -> service.getSalesHistoryByStore(founderStore2Id, storeId1));
+            assertThrows(NoPermissionException, () => service.getSalesHistoryByStore(founderStore2Id, storeId1));
         }
 
         [Test]
@@ -662,8 +662,8 @@ namespace acceptanceTests{
             service.appointStoreOwner(founderStore1Id, store2FounderUserName, storeId1);
             service.removeManager(founderStore1Id, storeId1, store1Manager1UserName);
             service.appointStoreOwner(founderStore2Id, store1Manager1UserName, storeId1);
-            assertThrows(NoPermissionException.class, () -> service.removeOwner(founderStore1Id,storeId1, store1Manager1UserName));
-            assertDoesNotThrow(() -> service.removeOwner(founderStore2Id,storeId1, store1Manager1UserName));
+            assertThrows(NoPermissionException, () => service.removeOwner(founderStore1Id,storeId1, store1Manager1UserName));
+            assertDoesNotThrow(() => service.removeOwner(founderStore2Id,storeId1, store1Manager1UserName));
         }
 
         [Test]
@@ -672,14 +672,14 @@ namespace acceptanceTests{
             setUpStore2Founder();
 
             service.appointStoreOwner(founderStore1Id, store1Manager1UserName, storeId1);
-            assertThrows(NoPermissionException.class, () -> service.removeOwner(founderStore2Id, storeId1, store1Manager1UserName));
+            assertThrows(NoPermissionException, () => service.removeOwner(founderStore2Id, storeId1, store1Manager1UserName));
         }
 
         [Test]
         void removeStoreOwnerByManagerOfTheStore() {
             setUpStore1();
 
-            assertThrows(NoPermissionException.class, () -> service.removeOwner(store1Manager1Id, storeId1, store1FounderUserName));
+            assertThrows(NoPermissionException, () => service.removeOwner(store1Manager1Id, storeId1, store1FounderUserName));
         }
 
         [Test]
