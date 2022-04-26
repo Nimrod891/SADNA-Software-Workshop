@@ -93,7 +93,7 @@ public class Store{
     /**
      * This method returns the items in the store's inventory
      */
-    public Dictionary<Product, Int32> getItems() {
+    public Dictionary<Product, int> getItems() {
         return this.inventory.getItems();
     }
 
