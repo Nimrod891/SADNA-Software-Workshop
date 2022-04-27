@@ -4,20 +4,22 @@ using Userpack;
 using System.Runtime.CompilerServices;
 using System.Collections.Concurrent;
 using System.Threading;
+using java.security.acl;
+using java.util;
+using StorePack;
 
 namespace tradingSystem
 {
 	
 	public class TradingSystem
 	{	
-		private ConcurrentDictionary<int, User> connections;
+		private ConcurrentDictionary<string, User> connections;
 
 		private ConcurrentDictionary<string, Subscriber> subscriber;
+		private ConcurrentDictionary<string, Store> stores; // key: store id
 
-		private int subscribercounter;
-
-		private int storeIdCounter =0; //Todo make thread safe fields.
-		
+		private int subscribercounte =0;
+		private int storeIdCounter =0; //Todo make thread safe fields
 		private int counterId=0; // maybe we will find a different way to make an id.
 
 		private UserAuthentication auth;
@@ -30,15 +32,16 @@ namespace tradingSystem
 		public string connect()
 		 {
        //TODO: probebly change the way we get the id.
-	  	 	int connectionId = Interlocked.Increment(ref id);
-			connections.Add(connectionId, new User());
+	  	 	string connectionId = Interlocked.Increment(ref counterId).ToString();
+	        
+			connections.TryAdd(connectionId, new User());
         	return connectionId;
     	}
 
 		public void register( string username, string password)
 		{
-			auth.register(userName, password);//maybe need change
-			subscriber.TryAdd(username , new Subscriber(Interlocked.Increment(ref storeIdCounter),username));
+			auth.register(username, password);//maybe need change
+			//subscriber.TryAdd(username , new Subscriber(Interlocked.Increment(ref ),username));
 		}
 
 		public void exit(string id)
@@ -48,7 +51,7 @@ namespace tradingSystem
 			 // if it's a subscriber nothing will happen 
 			 // if its a  visitor we will deltlete him from the list of connections.
 		}
-		 public void login(String connectionId, String userName, String password)
+		public void login(string connectionId, string userName, string password)
 		 {
 			 
        		User user = getUserByConnectionId(connectionId);
@@ -59,6 +62,45 @@ namespace tradingSystem
         	//subscriber.set
 
 		 }
+		 public void logout(string connectionId) 
+		 {
+			 User guest = new User();
+			 connections.TryAdd(connectionId, guest);
+		 }
+		 
+		 public int newStore(Subscriber subscriber, string storeName)
+		 {
+
+			 int id = Interlocked.Increment(ref storeIdCounter);
+			 
+
+		 Store store = new Store(id, storeName, "description", null, null, new Observable());
+
+		 foreach (Store s in stores.Values)
+		 {
+			 if(storeName.Equals(store.getName()))
+				 throw new Exception();
+		 }
+		 stores.TryAdd(id.ToString(), store);
+		 subscriber.addOwnerPermission(store);
+//        observables.put(store, new Observable());
+		 //store.
+
+		 return id;
+	}
+		 public ICollection<Subscriber> getStoreStaff(Subscriber subscriber, Store store, ICollection<Subscriber> staff)
+		 {
+			 ArrayList p = new ArrayList();
+			 p.add(AdminPermission.getInstance());
+			 p.add(ManagerPermission.getInstance(store));
+			 AbsPermission managerPermission = ManagerPermission.getInstance(store);
+			 foreach (Subscriber s in this.subscriber.Values)
+			 {
+				 if (s.havePermission(managerPermission))
+					 staff.Add(s);
+			 }
+			 return staff;
+	}
 
 
 
