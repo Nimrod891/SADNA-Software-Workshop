@@ -1,2 +1,0 @@
-c:\users\zarfa\source\repos\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.csprojAssemblyReference.cache
-c:\users\zarfa\source\repos\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.csproj.CoreCompileInputs.cache
