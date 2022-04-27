@@ -13,14 +13,14 @@ namespace Userpack
         public static ManagerPermission getInstance(Store store)
         {
             
-            ManagerPermission mp = new ManagerPermission(store);
+            var mp = new ManagerPermission(store);
             AbsStorePermission abs;
             return (ManagerPermission)pool.putIfAbsent(mp, new WeakReference(mp));
 
         }
 
 
-        public String toString()
+        public string toString()
         {
             return "ManagerPermission{" +
                     "store=" + (store == null ? null : store.GetType().Name) +

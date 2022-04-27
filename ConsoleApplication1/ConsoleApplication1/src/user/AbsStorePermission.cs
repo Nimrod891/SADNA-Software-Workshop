@@ -19,7 +19,7 @@ namespace Userpack
             return store;
         }
 
-        public bool equals(Object o)
+        public bool equals(object o)
         {
             if (this == o) return true;
             if (o == null || this.GetType().Name != o.GetType().Name || !base.Equals(o)) return false;
@@ -34,7 +34,7 @@ namespace Userpack
         }
 
 
-        public String toString()
+        public string toString()
         {
             return GetType().ToString() + "{" +
                     "store=" + (store == null ? null : store.getName()) +

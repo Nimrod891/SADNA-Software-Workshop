@@ -19,14 +19,14 @@ namespace Userpack {
         }
 
         public static AppointerPermission getInstance(Subscriber target, Store store) {
-            AppointerPermission ap = new AppointerPermission(target, store);
+            var ap = new AppointerPermission(target, store);
             return (AppointerPermission)pool.putIfAbsent(ap, new WeakReference(ap));
         }
 
         public bool equals(object o) {
             if (this == o) return true;
             if (o == null || GetType().Name != o.GetType().Name || !base.equals(o)) return false;
-            AppointerPermission that = (AppointerPermission)o;
+            var that = (AppointerPermission)o;
             return object.Equals(target, that.target);
         }
 
@@ -36,7 +36,7 @@ namespace Userpack {
         }
 
 
-        public String toString() {
+        public string toString() {
             return "AppointerPermission{" +
                     "store=" + (store == null ? null : store.GetType().Name) +
                     " target=" + (target == null ? null : target.getUserName()) +

@@ -10,7 +10,7 @@ namespace Userpack
 
         public static AdminPermission getInstance()
         {
-            AdminPermission ad = new AdminPermission();
+            var ad = new AdminPermission();
             return (AdminPermission)pool.putIfAbsent(ad, new WeakReference(ad));
             
             /*(AdminPermission)ComputeIfAbsent(pool, ghp, new WeakReference(ghp)).TryGetTarget(abs);

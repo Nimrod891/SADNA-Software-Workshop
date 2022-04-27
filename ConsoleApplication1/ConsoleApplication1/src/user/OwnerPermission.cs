@@ -14,12 +14,12 @@ namespace Userpack
 
         public static OwnerPermission getInstance(Store store)
         {
-            OwnerPermission mp = new OwnerPermission(store);
+            var mp = new OwnerPermission(store);
             return (OwnerPermission)pool.putIfAbsent(mp, new WeakReference(mp));
         }
 
 
-        public String toString()
+        public string toString()
         {
             return "OwnerPermission{" +
                     "store=" + (store == null ? null : store.GetType().Name) +

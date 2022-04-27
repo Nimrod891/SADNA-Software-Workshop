@@ -14,7 +14,7 @@ namespace Userpack {
            var flag =products.contains(p);
            if (flag)
            {
-               int newquan = (int)products.get(p);
+               var newquan = (int)products.get(p);
                newquan += quantity;
                products.replace(p, products.get(p), newquan);
                return;
