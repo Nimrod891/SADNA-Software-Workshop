@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{1712B441-9CED-414F-81E6-756D53520DE6}</ProjectGuid>
+        <OutputType>Exe</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>ConsoleApplication1</RootNamespace>
+        <AssemblyName>ConsoleApplication1</AssemblyName>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="commons-codec-1.10, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\commons-codec-1.10.1.0.0\lib\net45\commons-codec-1.10.dll</HintPath>
+        </Reference>
+        <Reference Include="IKVM.OpenJDK.Charsets, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+          <HintPath>..\packages\IKVM.OpenJDK.Charsets.7.2.4630.5\lib\IKVM.OpenJDK.Charsets.dll</HintPath>
+        </Reference>
+        <Reference Include="IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+          <HintPath>..\packages\IKVM.OpenJDK.Core.7.2.4630.5\lib\IKVM.OpenJDK.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="IKVM.OpenJDK.Security, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+          <HintPath>..\packages\IKVM.OpenJDK.Security.7.2.4630.5\lib\IKVM.OpenJDK.Security.dll</HintPath>
+        </Reference>
+        <Reference Include="IKVM.OpenJDK.SwingAWT, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+          <HintPath>..\packages\IKVM.OpenJDK.SwingAWT.7.2.4630.5\lib\IKVM.OpenJDK.SwingAWT.dll</HintPath>
+        </Reference>
+        <Reference Include="IKVM.OpenJDK.Text, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+          <HintPath>..\packages\IKVM.OpenJDK.Text.7.2.4630.5\lib\IKVM.OpenJDK.Text.dll</HintPath>
+        </Reference>
+        <Reference Include="IKVM.OpenJDK.Util, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+          <HintPath>..\packages\IKVM.OpenJDK.Util.7.2.4630.5\lib\IKVM.OpenJDK.Util.dll</HintPath>
+        </Reference>
+        <Reference Include="IKVM.OpenJDK.XML.API, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+          <HintPath>..\packages\IKVM.OpenJDK.XML.API.7.2.4630.5\lib\IKVM.OpenJDK.XML.API.dll</HintPath>
+        </Reference>
+        <Reference Include="IKVM.Runtime, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+          <HintPath>..\packages\IKVM.Runtime.7.2.4630.5\lib\IKVM.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="JavaUtils, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\JavaUtils.Net.1.0.5\lib\net45\JavaUtils.dll</HintPath>
+        </Reference>
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Program.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="src\authentication\UserAuthentication.cs" />
+        <Compile Include="src\ExternalService\DeliveryData.cs" />
+        <Compile Include="src\ExternalService\DeliverySystemBasicImpl.cs" />
+        <Compile Include="src\ExternalService\DeliverySystemIF.cs" />
+        <Compile Include="src\ExternalService\PaymentData.cs" />
+        <Compile Include="src\ExternalService\PaymentSystemBasicImpl.cs" />
+        <Compile Include="src\ExternalService\PaymentSystemIF.cs" />
+        <Compile Include="src\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+        <Compile Include="src\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+        <Compile Include="src\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+        <Compile Include="src\policies\AbsCompoundDiscountPolicy.cs" />
+        <Compile Include="src\policies\AbsCompoundPurchasePolicy.cs" />
+        <Compile Include="src\policies\AbsSimpleDiscountPolicy.cs" />
+        <Compile Include="src\policies\AbsSimplePurchasePolicy.cs" />
+        <Compile Include="src\policies\DefaultDiscountPolicy.cs" />
+        <Compile Include="src\policies\DefaultPurchasePolicy.cs" />
+        <Compile Include="src\policies\DiscountPolicyIF.cs" />
+        <Compile Include="src\policies\PurchasePolicyIF.cs" />
+        <Compile Include="src\Properties\AssemblyInfo.cs" />
+        <Compile Include="src\review\Review.cs" />
+        <Compile Include="src\Security\verification.cs" />
+        <Compile Include="src\Service\TradingSystemServiceIF.cs" />
+        <Compile Include="src\Service\TradingSystemServiceImpl.cs" />
+        <Compile Include="src\spellChecker\SimpleMap.cs" />
+        <Compile Include="src\spellChecker\Spelling.cs" />
+        <Compile Include="src\Store\Inventory.cs" />
+        <Compile Include="src\Store\Product.cs" />
+        <Compile Include="src\Store\Store.cs" />
+        <Compile Include="src\tradingSystem\TradingSystem.cs" />
+        <Compile Include="src\tradingSystem\TradingSystemBuilder.cs" />
+        <Compile Include="src\tradingSystem\TradingSystemImpl.cs" />
+        <Compile Include="src\user\AbsPermission.cs" />
+        <Compile Include="src\user\AbsStorePermission.cs" />
+        <Compile Include="src\user\AdminPermission.cs" />
+        <Compile Include="src\user\AppointerPermission.cs" />
+        <Compile Include="src\user\Basket.cs" />
+        <Compile Include="src\user\EditPolicyPermission.cs" />
+        <Compile Include="src\user\GetHistoryPermission.cs" />
+        <Compile Include="src\user\ManageInventoryPermission.cs" />
+        <Compile Include="src\user\ManagerPermission.cs" />
+        <Compile Include="src\user\OwnerPermission.cs" />
+        <Compile Include="src\user\Subscriber.cs" />
+        <Compile Include="src\user\User.cs" />
+        <Compile Include="Tests\acceptanceTests\AcceptanceTests.cs" />
+        <Compile Include="Tests\acceptanceTests\DeliverySystemMock.cs" />
+        <Compile Include="Tests\acceptanceTests\Driver.cs" />
+        <Compile Include="Tests\acceptanceTests\PaymentSystemMock.cs" />
+        <Compile Include="Tests\acceptanceTests\ServiceProxy.cs" />
+        <Compile Include="Tests\acceptanceTests\TradingSystemServiceMock.cs" />
+        <Compile Include="Tests\authentication\UserAuthenticationTest.cs" />
+        <Compile Include="Tests\externalServices\DeliverySystemTest.cs" />
+        <Compile Include="Tests\externalServices\PaymentSystemTest.cs" />
+        <Compile Include="Tests\policies\DiscountPolicyTest.cs" />
+        <Compile Include="Tests\policies\PurchasePolicyTest.cs" />
+        <Compile Include="Tests\service\TradingSystemImplTest.cs" />
+        <Compile Include="Tests\store\InventoryTest.cs" />
+        <Compile Include="Tests\store\StoreTest.cs" />
+        <Compile Include="Tests\tradingSystem\TradingSystemTest.cs" />
+        <Compile Include="Tests\user\AdminPermissionTest.cs" />
+        <Compile Include="Tests\user\AppointerPermissionTest.cs" />
+        <Compile Include="Tests\user\BasketTest.cs" />
+        <Compile Include="Tests\user\EditPolicyPermissionTest.cs" />
+        <Compile Include="Tests\user\GetHistoryPermissionTest.cs" />
+        <Compile Include="Tests\user\ManageInventoryPermissionTest.cs" />
+        <Compile Include="Tests\user\ManagerPermissionTest.cs" />
+        <Compile Include="Tests\user\OwnerPermissionTest.cs" />
+        <Compile Include="Tests\user\PermissionTest.cs" />
+        <Compile Include="Tests\user\SubscriberConcurrencyTest.cs" />
+        <Compile Include="Tests\user\SubscriberTest.cs" />
+        <Compile Include="Tests\user\UserTest.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="src\obj\Debug\ConsoleApp4.csproj.CoreCompileInputs.cache" />
+      <Content Include="src\obj\Debug\ConsoleApp4.csproj.FileListAbsolute.txt" />
+      <Content Include="src\obj\Debug\ConsoleApp4.csprojAssemblyReference.cache" />
+      <Content Include="src\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Include="packages.config" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+
+</Project>
