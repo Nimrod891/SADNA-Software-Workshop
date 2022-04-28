@@ -249,7 +249,7 @@ namespace Userpack {
             removePermissionFromManager(target, store, GetHistoryPermission.getInstance(store));
         }
 
-        void addPermissionToManager(Subscriber target, Store store, AbsPermission permission) {
+       public void addPermissionToManager(Subscriber target, Store store, AbsPermission permission) {
 
             lock (target.id < id ? target.permissions : permissions) {
                 lock (target.id < id ? permissions : target.permissions) {
@@ -266,7 +266,7 @@ namespace Userpack {
             }
         }
 
-        void removePermissionFromManager(Subscriber target, Store store, AbsPermission permission) {
+       public void removePermissionFromManager(Subscriber target, Store store, AbsPermission permission) {
 
             lock (target.id < id ? target.permissions : permissions) {
                 lock (target.id < id ? permissions : target.permissions) {
