@@ -4,7 +4,7 @@ namespace tradingSystem
 {
 	public class TradingSystenImpl
 	{
-		TradingSystem tradingSys;
+		TradingSystem tradingSystem;
 
 	public TradingSystenImpl(TradingSystem tradingSys)
 	{
@@ -20,16 +20,16 @@ namespace tradingSystem
 		
     public void register(string userName, string password)
 	{
-		this.tradingSys.register(userName, password);
+		this.tradingSystem.register(userName, password);
 	}
 
     public void exit(string userid)
     {
-        this.tradingSys.exit(userid);
+        this.tradingSystem.exit(userid);
     }
 	public void login(string connectID, string userName, string pass)  
 	{
-		tradingSystem.login(connectionId, userName, pass);
+		tradingSystem.login(connectID, userName, pass);
 	}
 	}
 }

@@ -4,6 +4,8 @@ using Userpack;
 using System.Runtime.CompilerServices;
 using System.Collections.Concurrent;
 using System.Threading;
+using ConsoleApp4.authentication;
+using externalService;
 using java.security.acl;
 using java.util;
 using StorePack;
@@ -15,18 +17,35 @@ namespace tradingSystem
 	{	
 		private ConcurrentDictionary<string, User> connections;
 
-		private ConcurrentDictionary<string, Subscriber> subscriber;
+		private ConcurrentDictionary<string, Subscriber> subscribers;
 		private ConcurrentDictionary<string, Store> stores; // key: store id
-
+		private  ConcurrentDictionary<Store, ICollection<int>> storesPurchasePolicies; // key: store, value: purchase policies
+		private  ConcurrentDictionary<Store, ICollection<int>> storesDiscountPolicies; // key: store, value: discount policies
+		
+		private DeliverySystem deliverySystem;
+		private PaymentSystem paymentSystem;
+		private UserAuthentication auth;
 		private int subscribercounte =0;
 		private int storeIdCounter =0; //Todo make thread safe fields
 		private int counterId=0; // maybe we will find a different way to make an id.
-
-		private UserAuthentication auth;
+		
+		public User getUserByConnectionId(string connectionId)  {
+			User user = connections[connectionId];
+			if (user == null) throw new Exception(connectionId);
+			return user;
+		}
+		
+		public Subscriber getSubscriberByUserName(String userName) {
+			Subscriber subscriber = subscribers[userName];
+			if (subscriber == null) throw new Exception(userName);
+			return subscriber;
+		}
+		
+		
 		public TradingSystem(UserAuthentication auth)
 		{
 			this.auth = auth;
-			connections = new Dictionary<int, User>();
+			connections = new ConcurrentDictionary<string, User>();
 		}
 
 		public string connect()
@@ -74,7 +93,7 @@ namespace tradingSystem
 			 int id = Interlocked.Increment(ref storeIdCounter);
 			 
 
-		 Store store = new Store(id, storeName, "description", null, null, new Observable());
+		 Store store = new Store(id, storeName, "description", null, null);
 
 		 foreach (Store s in stores.Values)
 		 {
@@ -94,15 +113,39 @@ namespace tradingSystem
 			 p.add(AdminPermission.getInstance());
 			 p.add(ManagerPermission.getInstance(store));
 			 AbsPermission managerPermission = ManagerPermission.getInstance(store);
-			 foreach (Subscriber s in this.subscriber.Values)
+			 foreach (Subscriber s in this.subscribers.Values)
 			 {
 				 if (s.havePermission(managerPermission))
 					 staff.Add(s);
 			 }
 			 return staff;
-	}
+		 }	
+		 
+		 public Store getStore(int storeId) 
+		 {
+
+			 Store store = stores[storeId.ToString()];
+			if (store == null)
+				throw new Exception(storeId.ToString());
+			 return store;
+		 }
+		 
+		 public ICollection<string> getItems(string keyWord, string productName, string category, string subCategory,
+			 double ratingItem, double ratingStore, double maxPrice, double minPrice) {
+
+			 ICollection<string> items = new LinkedList<string>();
+			 Collection itemsToAdd;
+			 foreach (Store store in  stores.Values)
+			 {
+				 itemsToAdd = store.searchAndFilter(keyWord, productName, category, ratingItem, ratingStore, maxPrice, minPrice);
+				 foreach (Product p in itemsToAdd)
+				 items.Add("store: " + store.getId() + ", " + p.ToString());
+			 }
 
 
+			 return items;
+		 }
+		
 
 
 	}
