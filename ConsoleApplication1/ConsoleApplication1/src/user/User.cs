@@ -13,38 +13,34 @@ using java.util.concurrent;
 
 namespace Userpack {
     public class User {
-
-        protected ConcurrentDictionary<Store, Basket> baskets;
+        protected ConcurrentHashMap baskets; // store , basket
 
         public User() {
-            this.baskets = new ConcurrentDictionary<Store, Basket>(); // store , basket
+            this.baskets = new ConcurrentHashMap(); // store , basket
         }
 
-        public User(ConcurrentDictionary<Store, Basket> baskets) {
+        public User(ConcurrentHashMap baskets) {
             this.baskets = baskets;
         }
 
-        public ConcurrentDictionary<Store, Basket> getCart() {
+        public ConcurrentHashMap getCart() {
             return this.baskets;
         }
 
         public void makeCart(User from) {
 
-            if (this.baskets.Count == 0) {
-                foreach (Store s in from.baskets.Keys) {
-                    if (!this.baskets.ContainsKey(s))
-                    {
-                        this.baskets[s] = from.baskets[s];
-                    }
-                }
-            }
+            if (baskets.isEmpty())
+                baskets.putAll(from.getCart());
         }
 
         public Basket getBasket(Store store) {
 
-            return ComputeIfAbsent(baskets, store,
-                k => new Basket(k,
-                    new ConcurrentHashMap())); // TODO maybe change after finish basket class
+            if (baskets.contains(store))
+            {
+                return (Basket)baskets.get(store);
+            }
+            baskets.put(store, new Basket(store, new ConcurrentHashMap()));
+            return (Basket)(baskets.get(store));
         }
 
 
@@ -87,7 +83,7 @@ namespace Userpack {
                 addCartToPurchases(storePurchaseDetails);
             }
 
-            baskets.Clear();
+            baskets.clear();
         }
 
         private double processCartAndCalculatePrice(double totalPrice, Map storePurchaseDetails) {

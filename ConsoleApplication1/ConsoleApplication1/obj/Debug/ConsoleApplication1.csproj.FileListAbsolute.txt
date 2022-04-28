@@ -1,3 +1,6 @@
 C:\Users\chizb\OneDrive\Desktop\Sadna-Project\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.AssemblyReference.cache
 C:\Users\chizb\OneDrive\Desktop\Sadna-Project\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.SuggestedBindingRedirects.cache
 C:\Users\chizb\OneDrive\Desktop\Sadna-Project\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.CoreCompileInputs.cache
+C:\Users\dor perez\Desktop\sadnav\SADNA-Software-Workshop\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.AssemblyReference.cache
+C:\Users\dor perez\Desktop\sadnav\SADNA-Software-Workshop\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.SuggestedBindingRedirects.cache
+C:\Users\dor perez\Desktop\sadnav\SADNA-Software-Workshop\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.CoreCompileInputs.cache

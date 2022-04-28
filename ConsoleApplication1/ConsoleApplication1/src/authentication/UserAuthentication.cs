@@ -37,10 +37,12 @@ namespace Userpack
         {
             var sr = new ConcurrentHashMap(); // string, Record
             var r = new Random();
-            UserAuthentication1(sr, createMessageDigest(), r);
+            this.records = sr;
+            this.digest = createMessageDigest();
+            this.random = r;
         }
 
-        private void UserAuthentication1(ConcurrentHashMap sr, MessageDigest messageDigest, Random random1)
+        public  UserAuthentication(ConcurrentHashMap sr, MessageDigest messageDigest, Random random1)
         {
             this.records = sr;
             this.digest = messageDigest;

@@ -29,7 +29,7 @@ namespace Userpack {
           //  this.notifications = new ArrayList<>();
         }
 
-        Subscriber(int id, string userName, HashSet<AbsPermission> permissions, ConcurrentHashMap itemsPurchased, ArrayList purchaseHistory) {
+        public Subscriber(int id, string userName, HashSet<AbsPermission> permissions, ConcurrentHashMap itemsPurchased, ArrayList purchaseHistory) {
             this.id = id;
             this.userName = userName;
             this.permissions = permissions;
@@ -319,9 +319,11 @@ namespace Userpack {
             // check this user has the permission to perform this action
             var v = ManagerPermission.getInstance(store);
             var v2 = AdminPermission.getInstance();
-            ArrayList a = new ArrayList();
-            a.Add(v);
-            a.Add(v2);
+            var a = new ArrayList
+            {
+                v,
+                v2
+            };
             validateAtLeastOnePermission(a); //ManagerPermission.getInstance(store));
 
             return store.getItems().keySet();
@@ -365,7 +367,7 @@ namespace Userpack {
         public ArrayList getSalesHistoryByStore(Store store) { // arraylist <string>
             var v = AdminPermission.getInstance();
             var v2 = GetHistoryPermission.getInstance(store);
-            ArrayList a = new ArrayList();
+            var a = new ArrayList();
             a.Add(v);
             a.Add(v2);
 
