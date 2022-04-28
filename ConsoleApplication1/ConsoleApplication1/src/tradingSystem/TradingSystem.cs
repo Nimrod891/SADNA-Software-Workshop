@@ -130,21 +130,22 @@ namespace tradingSystem
 			 return store;
 		 }
 		 
-		 public ICollection<string> getItems(string keyWord, string productName, string category, string subCategory,
-			 double ratingItem, double ratingStore, double maxPrice, double minPrice) {
-
-			 ICollection<string> items = new LinkedList<string>();
-			 Collection itemsToAdd;
-			 foreach (Store store in  stores.Values)
-			 {
-				 itemsToAdd = store.searchAndFilter(keyWord, productName, category, ratingItem, ratingStore, maxPrice, minPrice);
-				 foreach (Product p in itemsToAdd)
-				 items.Add("store: " + store.getId() + ", " + p.ToString());
-			 }
-
-
-			 return items;
-		 }
+		//  public Collection getItems(string keyWord, string productName, string category, string subCategory,
+		// 	 double ratingItem, double ratingStore, double maxPrice, double minPrice) {
+		//
+		// 	 ICollection<string> items = new LinkedList<string>();
+		// 	 ICollection<Product> itemsToAdd;
+		//
+		// 	 foreach (Store store in  stores.Values)
+		// 	 {
+		// 		 itemsToAdd = store.searchAndFilter(keyWord, productName, category, ratingItem, ratingStore, maxPrice, minPrice);
+		// 		 foreach (Product p in itemsToAdd)
+		// 		 items.Add("store: " + store.getId() + ", " + p.ToString());
+		// 	 }
+		//
+		//
+		// 	 return items;
+		// // }
 		
 
 

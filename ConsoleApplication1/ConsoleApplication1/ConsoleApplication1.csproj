@@ -122,10 +122,10 @@
         <Compile Include="src\policies\DefaultPurchasePolicy.cs" />
         <Compile Include="src\policies\DiscountPolicyIF.cs" />
         <Compile Include="src\policies\PurchasePolicyIF.cs" />
-        <Compile Include="src\Properties\AssemblyInfo.cs" />
         <Compile Include="src\review\Review.cs" />
         <Compile Include="src\Security\verification.cs" />
         <Compile Include="src\Service\ITradingSystemService.cs" />
+        <Compile Include="src\Service\TradingSystemServiceIF.cs" />
         <Compile Include="src\Service\TradingSystemServiceImpl.cs" />
         <Compile Include="src\spellChecker\SimpleMap.cs" />
         <Compile Include="src\spellChecker\Spelling.cs" />

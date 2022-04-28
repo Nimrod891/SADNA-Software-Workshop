@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4d588d16-e82a-40b5-8468-4299301731fd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Service/TradingSystemServiceIF.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleApplication1.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../ConsoleApplication1.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tests/acceptanceTests/AcceptanceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/acceptanceTests/AcceptanceTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tests/acceptanceTests/DeliverySystemMock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/acceptanceTests/DeliverySystemMock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tests/acceptanceTests/Driver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/acceptanceTests/Driver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tests/acceptanceTests/PaymentSystemMock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/acceptanceTests/PaymentSystemMock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tests/acceptanceTests/ServiceProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/acceptanceTests/ServiceProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tests/acceptanceTests/TradingSystemServiceMock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/acceptanceTests/TradingSystemServiceMock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tests/user/SubscriberTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/user/SubscriberTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/ConsoleApplication1.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/ConsoleApplication1.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/ConsoleApplication1.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/ConsoleApplication1.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Properties/AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tradingSystem/TradingSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tradingSystem/TradingSystem.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="28RBno4CCjCrvZbsHFhrjZ5T9xY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <created>1651169686735</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1651169686735</updated>
+      <workItem from="1651169691867" duration="22000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
