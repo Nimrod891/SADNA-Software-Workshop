@@ -17,7 +17,7 @@ using policies;
 using ArrayList = System.Collections.ArrayList;
 public class UserTest {
 
-    private User user;
+    private Vistor vistor;
 
     private static ConcurrentHashMap items = new ConcurrentHashMap(); // <Product, int>
 
@@ -30,7 +30,7 @@ public class UserTest {
 
     [Fact]
     void setUp()  {
-        user = new User((ConcurrentHashMap)baskets.Object);
+        vistor = new Vistor((ConcurrentHashMap)baskets.Object);
         b = new Basket(store.Object, items);
         //store.setObservable(new Observable());
         store.Object.setPurchasePolicy(new DefaultPurchasePolicy());
@@ -40,18 +40,18 @@ public class UserTest {
     [Fact]
     void makeCart_WhenEmpty()
     {
-        Mock<User> from = new Mock<User>();
-        user.makeCart(from.Object);
-        baskets.Object.putAll(user.getCart());
+        Mock<Vistor> from = new Mock<Vistor>();
+        vistor.makeCart(from.Object);
+        baskets.Object.putAll(vistor.getCart());
             
     }
 
     [Fact]
     void makeCart_WhenNotEmpty() {
         Assert.Equal(false, baskets.Object.isEmpty());
-        Mock<User> from = new Mock<User>();
-        user.makeCart(from.Object);
-        baskets.Object.putAll(user.getCart());
+        Mock<Vistor> from = new Mock<Vistor>();
+        vistor.makeCart(from.Object);
+        baskets.Object.putAll(vistor.getCart());
     }
 
     [Fact]
@@ -62,7 +62,7 @@ public class UserTest {
     [Fact]
     void getNewBasket() {
         Mock<Store> store = new Mock<Store>();
-        Assert.NotNull(user.getBasket(store.Object));
+        Assert.NotNull(vistor.getBasket(store.Object));
     }
 
     [Fact]
@@ -70,7 +70,7 @@ public class UserTest {
         Mock<Store> store = new Mock<Store>();
         Basket basket = new Basket(store.Object,items);
         baskets.Object.put(store, basket);
-        Assert.Same(basket, user.getBasket(store.Object));
+        Assert.Same(basket, vistor.getBasket(store.Object));
     }
 
     [Fact]
@@ -80,10 +80,10 @@ public class UserTest {
         baskets.Object.put(store, b);
 
         items.put(item, 3);
-        Assert.Equal(1, user.getCart().size());
+        Assert.Equal(1, vistor.getCart().size());
         Assert.Equal(5, store.Object.getItems().get(item));
-        user.purchaseCart(paymentSystem.Object, deliverySystem.Object);
-        Assert.Equal(0, user.getCart().size()); // checks that the cart is empty after the purchase
+        vistor.purchaseCart(paymentSystem.Object, deliverySystem.Object);
+        Assert.Equal(0, vistor.getCart().size()); // checks that the cart is empty after the purchase
         Assert.Equal(2, store.Object.getItems().get(item)); // checks that the inventory quantity updated
     }
 
@@ -114,7 +114,7 @@ public class UserTest {
         item = new Mock<Product>(store.Object.searchItemById(0));
         items.put(item, 3);
 
-        user.purchaseCart(paymentSystem.Object, deliverySystem.Object);
+        vistor.purchaseCart(paymentSystem.Object, deliverySystem.Object);
         Assert.True(store.Object.getPurchaseHistory().toString().contains("21.0")); // checks that the purchase value correct
     }
 
@@ -125,7 +125,7 @@ public class UserTest {
         item = new Mock<Product>(store.Object.searchItemById(0));
         items.put(item, 3);
 
-        user.purchaseCart(paymentSystem.Object, deliverySystem.Object);
+        vistor.purchaseCart(paymentSystem.Object, deliverySystem.Object);
         Assert.True(store.Object.getPurchaseHistory().toString().contains("cheese")); // checks that the purchase added to store history
     }
 }

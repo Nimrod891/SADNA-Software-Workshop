@@ -2,34 +2,34 @@ using System;
 
 namespace tradingSystem
 {
-	public class TradingSystenImpl
+	public class MarketSystenImpl
 	{
-		TradingSystem tradingSystem;
+		MarketSystem marketSystem;
 
-	public TradingSystenImpl(TradingSystem tradingSys)
+	public MarketSystenImpl(MarketSystem marketSys)
 	{
-		this.tradingSystem  = tradingSys;
+		this.marketSystem  = marketSys;
 	}
 
 	public string connect()
 	{
-		return this.tradingSystem.connect();
+		return this.marketSystem.connect();
 	}
 
 
 		
     public void register(string userName, string password)
 	{
-		this.tradingSystem.register(userName, password);
+		this.marketSystem.register(userName, password);
 	}
 
     public void exit(string userid)
     {
-        this.tradingSystem.exit(userid);
+        this.marketSystem.exit(userid);
     }
 	public void login(string connectID, string userName, string pass)  
 	{
-		tradingSystem.login(connectID, userName, pass);
+		marketSystem.login(connectID, userName, pass);
 	}
 	}
 }

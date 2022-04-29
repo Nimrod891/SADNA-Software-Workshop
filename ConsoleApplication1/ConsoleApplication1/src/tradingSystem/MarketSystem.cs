@@ -13,9 +13,9 @@ using StorePack;
 namespace tradingSystem
 {
 	
-	public class TradingSystem
+	public class MarketSystem
 	{	
-		private ConcurrentDictionary<string, User> connections;
+		private ConcurrentDictionary<string, Vistor> connections;
 
 		private ConcurrentDictionary<string, Subscriber> subscribers;
 		private ConcurrentDictionary<string, Store> stores; // key: store id
@@ -29,10 +29,10 @@ namespace tradingSystem
 		private int storeIdCounter =0; //Todo make thread safe fields
 		private int counterId=0; // maybe we will find a different way to make an id.
 		
-		public User getUserByConnectionId(string connectionId)  {
-			User user = connections[connectionId];
-			if (user == null) throw new Exception(connectionId);
-			return user;
+		public Vistor getUserByConnectionId(string connectionId)  {
+			Vistor vistor = connections[connectionId];
+			if (vistor == null) throw new Exception(connectionId);
+			return vistor;
 		}
 		
 		public Subscriber getSubscriberByUserName(String userName) {
@@ -42,10 +42,10 @@ namespace tradingSystem
 		}
 		
 		
-		public TradingSystem(UserAuthentication auth)
+		public MarketSystem(UserAuthentication auth)
 		{
 			this.auth = auth;
-			connections = new ConcurrentDictionary<string, User>();
+			connections = new ConcurrentDictionary<string, Vistor>();
 		}
 
 		public string connect()
@@ -53,7 +53,7 @@ namespace tradingSystem
        //TODO: probebly change the way we get the id.
 	  	 	string connectionId = Interlocked.Increment(ref counterId).ToString();
 	        
-			connections.TryAdd(connectionId, new User());
+			connections.TryAdd(connectionId, new Vistor());
         	return connectionId;
     	}
 
@@ -65,7 +65,7 @@ namespace tradingSystem
 
 		public void exit(string id)
 		{
-			User user =  connections[id];
+			Vistor vistor =  connections[id];
 			 //TODO : we will check the dynamic type if user 
 			 // if it's a subscriber nothing will happen 
 			 // if its a  visitor we will deltlete him from the list of connections.
@@ -73,17 +73,17 @@ namespace tradingSystem
 		public void login(string connectionId, string userName, string password)
 		 {
 			 
-       		User user = getUserByConnectionId(connectionId);
+       		Vistor vistor = getUserByConnectionId(connectionId);
         	auth.authenticate(userName, password);
         	Subscriber subscriber = getSubscriberByUserName(userName);
-       		subscriber.makeCart(user);
+       		subscriber.makeCart(vistor);
 			connections.TryAdd(connectionId,subscriber);
         	//subscriber.set
 
 		 }
 		 public void logout(string connectionId) 
 		 {
-			 User guest = new User();
+			 Vistor guest = new Vistor();
 			 connections.TryAdd(connectionId, guest);
 		 }
 		 

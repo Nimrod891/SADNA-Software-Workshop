@@ -11,7 +11,7 @@ using ArrayList = System.Collections.ArrayList;
 
 
 namespace Userpack {
-    public class Subscriber : User {
+    public class Subscriber : Vistor {
 
         private int id;
         private string userName;

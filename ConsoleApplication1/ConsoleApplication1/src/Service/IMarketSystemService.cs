@@ -4,7 +4,7 @@ using java.lang;
 
 namespace Service.TradingSystemServiceImpl;
 
-public interface ITradingSystemService
+public interface IMarketSystemService
 {
         //returns a connectId.
     string connect() ;

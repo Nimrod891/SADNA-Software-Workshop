@@ -124,15 +124,15 @@
         <Compile Include="src\policies\PurchasePolicyIF.cs" />
         <Compile Include="src\review\Review.cs" />
         <Compile Include="src\Security\verification.cs" />
-        <Compile Include="src\Service\ITradingSystemService.cs" />
+        <Compile Include="src\Service\IMarketSystemService.cs" />
         <Compile Include="src\Service\TradingSystemServiceIF.cs" />
-        <Compile Include="src\Service\TradingSystemServiceImpl.cs" />
+        <Compile Include="src\Service\MarketSystemServiceImpl.cs" />
         <Compile Include="src\spellChecker\SimpleMap.cs" />
         <Compile Include="src\spellChecker\Spelling.cs" />
         <Compile Include="src\Store\Inventory.cs" />
         <Compile Include="src\Store\Product.cs" />
         <Compile Include="src\Store\Store.cs" />
-        <Compile Include="src\tradingSystem\TradingSystem.cs" />
+        <Compile Include="src\tradingSystem\MarketSystem.cs" />
         <Compile Include="src\tradingSystem\TradingSystemBuilder.cs" />
         <Compile Include="src\tradingSystem\TradingSystemImpl.cs" />
         <Compile Include="src\user\AbsPermission.cs" />
@@ -146,7 +146,7 @@
         <Compile Include="src\user\ManagerPermission.cs" />
         <Compile Include="src\user\OwnerPermission.cs" />
         <Compile Include="src\user\Subscriber.cs" />
-        <Compile Include="src\user\User.cs" />
+        <Compile Include="src\user\Vistor.cs" />
         <Compile Include="Tests\acceptanceTests\AcceptanceTests.cs" />
         <Compile Include="Tests\acceptanceTests\DeliverySystemMock.cs" />
         <Compile Include="Tests\acceptanceTests\Driver.cs" />

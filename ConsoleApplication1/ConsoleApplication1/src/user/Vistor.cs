@@ -12,14 +12,14 @@ using java.util;
 using java.util.concurrent;
 
 namespace Userpack {
-    public class User {
+    public class Vistor {
         protected ConcurrentHashMap baskets; // store , basket
 
-        public User() {
+        public Vistor() {
             this.baskets = new ConcurrentHashMap(); // store , basket
         }
 
-        public User(ConcurrentHashMap baskets) {
+        public Vistor(ConcurrentHashMap baskets) {
             this.baskets = baskets;
         }
 
@@ -27,7 +27,7 @@ namespace Userpack {
             return this.baskets;
         }
 
-        public void makeCart(User from) {
+        public void makeCart(Vistor from) {
 
             if (baskets.isEmpty())
                 baskets.putAll(from.getCart());

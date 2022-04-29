@@ -8,10 +8,10 @@ using String = System.String;
 
 namespace Service.TradingSystemServiceImpl{
 //this class offers all the functionality that serve the system
-public class TradingSystemServiceImpl: ITradingSystemService
+public class MarketSystemServiceImpl: IMarketSystemService
 {
-    private  TradingSystenImpl trading;
-    public TradingSystemServiceImpl(TradingSystenImpl tradingServiceImpl)
+    private  MarketSystenImpl market;
+    public MarketSystemServiceImpl(MarketSystenImpl marketServiceImpl)
     {
        // this.tradingSystemImpl = tradingSystemImpl;
     }
