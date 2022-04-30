@@ -46,9 +46,10 @@ namespace Userpack
         {
             this.records = sr;
             this.digest = messageDigest;
-            this.random = random1;        }
+            this.random = random1;
+        }
 
-        private static MessageDigest createMessageDigest()
+        private MessageDigest createMessageDigest()
         {
             try
             {
@@ -72,7 +73,6 @@ namespace Userpack
         {
 
             var r = new { absent = true };
-
             records.putIfAbsent(userName, new Func<object, Record>(k => {
                 var absent = r.absent;
                 absent = false;

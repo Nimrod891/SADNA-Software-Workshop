@@ -16,7 +16,6 @@ namespace tradingSystem
 	public class MarketSystem
 	{	
 		private ConcurrentDictionary<string, Vistor> connections;
-
 		private ConcurrentDictionary<string, Subscriber> subscribers;
 		private ConcurrentDictionary<string, Store> stores; // key: store id
 		private  ConcurrentDictionary<Store, ICollection<int>> storesPurchasePolicies; // key: store, value: purchase policies
@@ -25,12 +24,18 @@ namespace tradingSystem
 		private DeliverySystem deliverySystem;
 		private PaymentSystem paymentSystem;
 		private UserAuthentication auth;
-		private int subscribercounte =0;
+		private int subscribercounte = 0;
 		private int storeIdCounter =0; //Todo make thread safe fields
 		private int counterId=0; // maybe we will find a different way to make an id.
 		
 		public Vistor getUserByConnectionId(string connectionId)  {
 			Vistor vistor = connections[connectionId];
+			if (vistor == null) throw new Exception(connectionId);
+			return vistor;
+		}
+		
+		public Vistor getConnectionIdByUsername(string username)  {
+			
 			if (vistor == null) throw new Exception(connectionId);
 			return vistor;
 		}
@@ -52,7 +57,6 @@ namespace tradingSystem
 		 {
        //TODO: probebly change the way we get the id.
 	  	 	string connectionId = Interlocked.Increment(ref counterId).ToString();
-	        
 			connections.TryAdd(connectionId, new Vistor());
         	return connectionId;
     	}
@@ -85,6 +89,11 @@ namespace tradingSystem
 		 {
 			 Vistor guest = new Vistor();
 			 connections.TryAdd(connectionId, guest);
+		 }
+
+		 public ConcurrentDictionary<string, Vistor> getConnections()
+		 {
+			 return connections;
 		 }
 		 
 		 public int newStore(Subscriber subscriber, string storeName)
@@ -123,7 +132,6 @@ namespace tradingSystem
 		 
 		 public Store getStore(int storeId) 
 		 {
-
 			 Store store = stores[storeId.ToString()];
 			if (store == null)
 				throw new Exception(storeId.ToString());

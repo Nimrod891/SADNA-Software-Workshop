@@ -1,63 +1,52 @@
-using System.Collections.Generic;
-using System.Collections;
-using System.Collections.Concurrent;
-using System.Runtime;
+﻿
 using System.Collections.ObjectModel;
-using java.lang;
+using java.util;
+using Service.TradingSystemServiceImpl;
 using tradingSystem;
 using Userpack;
-using String = System.String;
+using Xunit;
 
-namespace Service.TradingSystemServiceImpl
+namespace ConsoleApplication1.Tests.tradingSystem
 {
-//this class offers all the functionality that serve the system
-    public class MarketSystemServiceImpl : IMarketSystemService
+    public class TradingSystemServiceTest
     {
-        private MarketSystenImpl market;
+        private MarketSystemServiceImpl service;
 
-        public MarketSystemServiceImpl(MarketSystenImpl marketServiceImpl)
+        void SetUp()
         {
-            // this.tradingSystemImpl = tradingSystemImpl;
+            service = new MarketSystemServiceImpl(new MarketSystenImpl(new MarketSystem(new UserAuthentication())));
+        }
+        void BreakDown()
+        {
+            service = new MarketSystemServiceImpl(new MarketSystenImpl(new MarketSystem(new UserAuthentication())));
+        }
+        
+        void SetUpStores()
+        {
+            //Add Store and Product to store of current marketservice
+            var store_id = service.openNewStore("1", "Store1");
+            service.addProductToStore("1", store_id, "Product1", "Category1", "SubCategory1a", 1, 40.0);
+        }
+        [Fact]
+        public void getStoresInfo(string userID)
+        {
+            //
+            SetUp();
+            SetUpStores();
+            var expected_store_info_string_collection = service.getStoresInfo("1");
+            Collection<string> c = new Collection<string>();
+            c.Add("Product1"+"\n");
+            var actual_store_info_string_collection = c;
+            Assert.Equal(expected_store_info_string_collection,actual_store_info_string_collection);
+            BreakDown();
         }
 
-        public string GetIdByUsername(string username)
+        [Fact]
+        public Collection<string> getItemsByStore(string userID, string storeId)
         {
-            return market.marketSystem.getUserByConnectionId(username);
+            throw new System.NotImplementedException();
         }
-
-        //will happen when someone joins the thread, will initialize him as a user(visitor).
-        public string connect()
-        {
-            // return tradingSystemImpl.connect();
-            return "";
-        }
-
-        //will happen when the vistor presses the X button. will erase him from the system.
-        //if its a member this function wont do nothing
-        public void exit(string userid)
-        {
-            //logger
-            //tradingSystemImpl.exit(userid);
-        }
-
-
-        public void register(string userName, string password)
-        {
-            //tradingSystemImpl.register(userName, password);
-        }
-
-        public void login(string connectID, string userName, string pass)
-        {
-            // eventLog.writeToLogger("Login with userName: " + userName + ", password: *********");
-            // tradingSystemImpl.login(connectID, userName, pass);
-        }
-
-        public void logout(String connectID)
-        {
-            //eventLog.writeToLogger("Logout subscriber");
-            //tradingSystemImpl.logout(connectID);
-        }
-
+        [Fact]
         public Collection<string> getItems(string keyWord, string productName, string category, string subCategory,
             double ratingItem,
             double ratingStore, double maxPrice, double minPrice)
@@ -100,15 +89,6 @@ namespace Service.TradingSystemServiceImpl
             throw new System.NotImplementedException();
         }
 
-        public Collection<string> getStoresInfo(string userID)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Collection<string> getItemsByStore(string userID, string storeId)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public string openNewStore(string userID, string newStoreName)
         {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using java.lang;
 using java.util;
@@ -12,7 +13,7 @@ using String = System.String;
 using StringBuilder = System.Text.StringBuilder;
 
 //this class has functions related to the stcok of a store , item search methods and a caculate method
-public class Inventory  
+public class Inventory
 {
     private Map products; //<k: Product, v: int>
     private int idpatcher;
@@ -24,6 +25,21 @@ public class Inventory
         products = new HashMap();
     }
 
+    private string toString()
+    {
+        string s = "";
+        var set = products.keySet();
+        var iterator = set.iterator();
+        for (int i = 0; i < set.size(); i++)
+        {
+            if (iterator.hasNext())
+            {
+                s = s + iterator.next().ToString() + '\n';
+            }
+        }
+
+        return s;
+    }
     private bool scompare(string s1, string s2)
     {
         return s1.Equals(s2, StringComparison.OrdinalIgnoreCase);

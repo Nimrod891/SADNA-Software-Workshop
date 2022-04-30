@@ -166,6 +166,7 @@
         <Compile Include="Tests\service\TradingSystemImplTest.cs" />
         <Compile Include="Tests\store\InventoryTest.cs" />
         <Compile Include="Tests\store\StoreTest.cs" />
+        <Compile Include="Tests\tradingSystem\TradingSystemServiceTest.cs" />
         <Compile Include="Tests\tradingSystem\TradingSystemTest.cs" />
         <Compile Include="Tests\user\AdminPermissionTest.cs" />
         <Compile Include="Tests\user\AppointerPermissionTest.cs" />
