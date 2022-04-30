@@ -14,7 +14,7 @@
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-        <LangVersion>latest</LangVersion>
+        <LangVersion>preview</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -69,6 +69,9 @@
         <Reference Include="JavaUtils, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\JavaUtils.Net.1.0.5\lib\net45\JavaUtils.dll</HintPath>
         </Reference>
+        <Reference Include="log4net, Version=2.0.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+          <HintPath>..\packages\log4net.2.0.14\lib\net45\log4net.dll</HintPath>
+        </Reference>
         <Reference Include="Moq, Version=4.17.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
           <HintPath>..\packages\Moq.4.17.2\lib\net45\Moq.dll</HintPath>
         </Reference>
@@ -86,6 +89,7 @@
         <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
           <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
         </Reference>
+        <Reference Include="System.Web" />
         <Reference Include="System.Xml" />
         <Reference Include="System.Xml.Linq" />
         <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
@@ -102,6 +106,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="LogHelper.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="src\authentication\UserAuthentication.cs" />
@@ -182,6 +187,7 @@
       <Content Include="src\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     </ItemGroup>
     <ItemGroup>
+      <None Include="App.config" />
       <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>

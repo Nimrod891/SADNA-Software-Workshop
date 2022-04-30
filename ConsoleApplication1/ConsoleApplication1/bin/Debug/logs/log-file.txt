@@ -1,0 +1,7 @@
+14:43:14,264 [ConsoleApplication1.Program] DEBUG - Most specific log, for developers (lowest level)
+14:43:14,274 [ConsoleApplication1.Program] INFO - Maintenance: for example log that a user logged in successfully
+14:43:14,274 [ConsoleApplication1.Program] WARN - Maintenance: User entered a wrong password 5 times for example
+14:43:14,282 [ConsoleApplication1.Program] ERROR - This is my error message
+System.DivideByZeroException: ניסיון לחלק באפס.
+   ב-  ConsoleApplication1.Program.Main(String[] args) ב- C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\ConsoleApplication1\Program.cs:שורה 25
+14:43:14,292 [ConsoleApplication1.Program] FATAL - Maintenance: Highest warning, program crashed for example
