@@ -3,7 +3,6 @@ using System;
 //namespace StorePack;
 using System.Collections.Generic;
 using System.Text;
-using policies;
 using System.Runtime;
 using Userpack;
 //using spellingPack;
@@ -16,7 +15,6 @@ using ikvm.extensions;
 using java.awt;
 using java.util;
 using java.util.concurrent;
-using spellChecker;
 using ArrayList = System.Collections.ArrayList;
 
 namespace StorePack{
@@ -26,8 +24,6 @@ public class Store{
     private string name;
     private string description;
     private double rating;
-    private DiscountPolicyIF discountPolicy;
-    private PurchasePolicyIF purchasePolicy;
     //private String founder;
     private bool isActive;
     private  Inventory inventory = new Inventory();
@@ -44,7 +40,7 @@ public class Store{
      *                    //  * @param founder - the fonder of the new store
      * @throws WrongNameException
      */
-    public Store(int id, string name, string description, PurchasePolicyIF purchasePolicy, DiscountPolicyIF discountPolicy) {//, Observable observable) {
+    public Store(int id, string name, string description) {//, Observable observable) {
         if (name == null || name.Equals("") || name.Trim().Equals(""))
             throw new Exception( "WrongNameException: store name is null or contains only white spaces");
         if (name.ToCharArray()[0] >= '0' && name.ToCharArray()[0] <= '9')
@@ -57,17 +53,6 @@ public class Store{
         this.name = name;
         this.description = description;
         this.rating = 0;
-        // this.founder = founder; // TODO: should check how to implement
-//        this.inventory = new Inventory(tradingSystem);
-        if(purchasePolicy == null)
-            this.purchasePolicy = new DefaultPurchasePolicy();
-        else
-            this.purchasePolicy = purchasePolicy;
-        if(discountPolicy == null)
-            this.discountPolicy = new DefaultDiscountPolicy(this.inventory.getItems().keySet());
-        else
-            this.discountPolicy = discountPolicy;
-        this.isActive = true;
         //this.observable = observable;
     }
 
@@ -134,40 +119,20 @@ public class Store{
         return this.inventory.addProduct(name, price, category, amount);
     }
 
-//    /**
-//     * This method is used to search the store's inventory for items that matches the param name.
-//     * @param name - the name of the wanted item*/
-//    public ConcurrentLinkedQueue<Item> searchItemByName(String name) {
-//        return this.inventory.searchItemByName(name);
-//    }
-
-//    /**
-//     * This method is used to search the store's inventory for items that matches the param category.
-//     * @param category - the category of the wanted item */
-//    public ConcurrentLinkedQueue<Item> searchItemByCategory(String category) {
-//        return this.inventory.searchItemByCategory(category);
-//    }
-//
-//    /**
-//     * This method is used to search the store's inventory for items that matches the param keyword.
-//     * @param keyword - the keyword of the wanted item */
-//    public ConcurrentLinkedQueue<Item> searchItemByKeyWord(String keyword)  {
-//        return this.inventory.searchItemByKeyWord(keyword);
-//    }
 
 
-    public Collection searchAndFilter(string keyWord, string itemName, string category, double ratingItem,
-                                                       double ratingStore, double maxPrice, double minPrice) {
-        Spelling spelling = new Spelling();
-        if(keyWord != null)
-            keyWord = spelling.correct(keyWord.toLowerCase());
-        if(itemName != null)
-            itemName = spelling.correct(itemName.toLowerCase());
-        if(category != null)
-            category = spelling.correct(category.toLowerCase());
-        var search = searchItems(keyWord, itemName, category);
-        return filterItems(search, ratingItem, ratingStore, maxPrice, minPrice);
-    }
+    // public Collection searchAndFilter(string keyWord, string itemName, string category, double ratingItem,
+    //                                                    double ratingStore, double maxPrice, double minPrice) {
+    //     Spelling spelling = new Spelling();
+    //     if(keyWord != null)
+    //         keyWord = spelling.correct(keyWord.toLowerCase());
+    //     if(itemName != null)
+    //         itemName = spelling.correct(itemName.toLowerCase());
+    //     if(category != null)
+    //         category = spelling.correct(category.toLowerCase());
+    //     var search = searchItems(keyWord, itemName, category);
+    //     return filterItems(search, ratingItem, ratingStore, maxPrice, minPrice);
+    // }
 
     //    /**
 //     * This method searches the store's inventory for an item
@@ -315,22 +280,9 @@ public class Store{
     public string toString() {
         return inventory.toString();
     }
-
-    public PurchasePolicyIF getPurchasePolicy() {
-        return purchasePolicy;
-    }
-
-    public DiscountPolicyIF getDiscountPolicy() {
-        return discountPolicy;
-    }
-
-    public void setDiscountPolicy(DiscountPolicyIF discountPolicy) { this.discountPolicy = discountPolicy; }
-
-    public void setPurchasePolicy(PurchasePolicyIF purchasePolicy) { this.purchasePolicy = purchasePolicy; }
-
-
-    public void changeItem(int itemID, string newSubCategory, int newQuantity, double newPrice) {
-        this.inventory.changeItemDetails(itemID, newSubCategory, newQuantity, newPrice);
+    
+    public void changeItem(int itemID, int newQuantity, double newPrice) {
+        this.inventory.changeItemDetails(itemID, newQuantity, newPrice);
     }
 
     public bool ifActive() {
@@ -357,10 +309,7 @@ public class Store{
         this.purchases.Add(purchaseDetails);
     }
 
-    //TODO remember to deal with policies and types in a furure version
-    public double processBasketAndCalculatePrice(Basket basket, StringBuilder details, DiscountPolicyIF storeDiscountPolicy) { // TODO should get basket
-        return inventory.calculate(basket, details, storeDiscountPolicy);
-    }
+
 
     public void rollBack(ConcurrentHashMap products) {
         foreach (KeyValuePair<Product, int> entry in products)

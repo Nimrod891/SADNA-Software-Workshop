@@ -5,7 +5,6 @@ using ConsoleApp4.authentication;
 using externalService.ConsoleApp4.authentication;
 using StorePack;
 using externalService;
-using policies;
 using System.Collections.Generic;
 using System.Text;
 using java.util;
@@ -43,7 +42,7 @@ namespace Userpack {
             return (Basket)(baskets.get(store));
         }
 
-
+/*
         public void purchaseCart(PaymentSystem paymentSystem, DeliverySystem deliverySystem) {
 
             double totalPrice = 0;
@@ -85,30 +84,8 @@ namespace Userpack {
 
             baskets.clear();
         }
-
-        private double processCartAndCalculatePrice(double totalPrice, Map storePurchaseDetails) {
-            bool validPolicy;
-            PurchasePolicyIF storePurchasePolicy;
-            DiscountPolicyIF storeDiscountPolicy;
-
-            foreach (KeyValuePair<Store, Basket> storeBasketEntry in baskets)
-            {
-                storePurchasePolicy = storeBasketEntry.Key.getPurchasePolicy();
-                storeDiscountPolicy = storeBasketEntry.Key.getDiscountPolicy();
-                validPolicy = storePurchasePolicy.isValidPurchase(storeBasketEntry.Value);
-                if (!validPolicy)
-                    throw new PolicyException("policy problem");
-
-                StringBuilder purchaseDetails = new StringBuilder();
-                Store store = storeBasketEntry.Key;
-                Basket basket = storeBasketEntry.Value;
-                double price = store.processBasketAndCalculatePrice(basket, purchaseDetails, storeDiscountPolicy);
-                totalPrice += price;
-                purchaseDetails.Append("Total basket price: ").Append(price).Append("\n");
-                storePurchaseDetails.put(store, purchaseDetails.ToString());
-            }
-            return totalPrice;
-        }
+        */
+        
         
         public void addCartToPurchases(HashMap details) {
             // overridden in subclass
