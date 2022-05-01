@@ -15,7 +15,6 @@ using ikvm.extensions;
 using java.awt;
 using java.util;
 using java.util.concurrent;
-using spellChecker;
 using ArrayList = System.Collections.ArrayList;
 
 namespace StorePack{
@@ -120,40 +119,20 @@ public class Store{
         return this.inventory.addProduct(name, price, category, amount);
     }
 
-//    /**
-//     * This method is used to search the store's inventory for items that matches the param name.
-//     * @param name - the name of the wanted item*/
-//    public ConcurrentLinkedQueue<Item> searchItemByName(String name) {
-//        return this.inventory.searchItemByName(name);
-//    }
-
-//    /**
-//     * This method is used to search the store's inventory for items that matches the param category.
-//     * @param category - the category of the wanted item */
-//    public ConcurrentLinkedQueue<Item> searchItemByCategory(String category) {
-//        return this.inventory.searchItemByCategory(category);
-//    }
-//
-//    /**
-//     * This method is used to search the store's inventory for items that matches the param keyword.
-//     * @param keyword - the keyword of the wanted item */
-//    public ConcurrentLinkedQueue<Item> searchItemByKeyWord(String keyword)  {
-//        return this.inventory.searchItemByKeyWord(keyword);
-//    }
 
 
-    public Collection searchAndFilter(string keyWord, string itemName, string category, double ratingItem,
-                                                       double ratingStore, double maxPrice, double minPrice) {
-        Spelling spelling = new Spelling();
-        if(keyWord != null)
-            keyWord = spelling.correct(keyWord.toLowerCase());
-        if(itemName != null)
-            itemName = spelling.correct(itemName.toLowerCase());
-        if(category != null)
-            category = spelling.correct(category.toLowerCase());
-        var search = searchItems(keyWord, itemName, category);
-        return filterItems(search, ratingItem, ratingStore, maxPrice, minPrice);
-    }
+    // public Collection searchAndFilter(string keyWord, string itemName, string category, double ratingItem,
+    //                                                    double ratingStore, double maxPrice, double minPrice) {
+    //     Spelling spelling = new Spelling();
+    //     if(keyWord != null)
+    //         keyWord = spelling.correct(keyWord.toLowerCase());
+    //     if(itemName != null)
+    //         itemName = spelling.correct(itemName.toLowerCase());
+    //     if(category != null)
+    //         category = spelling.correct(category.toLowerCase());
+    //     var search = searchItems(keyWord, itemName, category);
+    //     return filterItems(search, ratingItem, ratingStore, maxPrice, minPrice);
+    // }
 
     //    /**
 //     * This method searches the store's inventory for an item

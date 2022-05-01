@@ -132,8 +132,6 @@
         <Compile Include="src\Security\verification.cs" />
         <Compile Include="src\Service\IMarketSystemService.cs" />
         <Compile Include="src\Service\MarketSystemServiceImpl.cs" />
-        <Compile Include="src\spellChecker\SimpleMap.cs" />
-        <Compile Include="src\spellChecker\Spelling.cs" />
         <Compile Include="src\Store\Inventory.cs" />
         <Compile Include="src\Store\Product.cs" />
         <Compile Include="src\Store\Store.cs" />
