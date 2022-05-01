@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using java.lang;
 using java.util;
-using policies;
+
 using StorePack;
 using Userpack;
 using Exception = System.Exception;
@@ -189,7 +189,7 @@ public class Inventory
         return item;
     }
 
-    public void changeItemDetails(int itemID, string newSubCategory, int newQuantity, double newPrice)
+    public void changeItemDetails(int itemID, int newQuantity, double newPrice)
     {
         //synchronized (this.items)
         //{
@@ -211,39 +211,15 @@ public class Inventory
         // }
     }
     
-    
-    public double calculate(Basket basket, StringBuilder details, DiscountPolicyIF storeDiscountPolicy)  {
-        /*
-        for (Map.Entry<Item, Integer> entry: items.entrySet()) {
-            if (!entry.getKey().isLocked())
-                entry.getKey().lock();
-            else
-            {
-                for (Map.Entry<Item, Integer> newEntry: items.entrySet()) {
-                    if (newEntry.getKey().isLocked())
-                        newEntry.getKey().unlock();
-                }
-                throw new Exception("a kind of wait should be here"); //TODO we have to check what to do with locked items
-            }
-        }*/
-        double totalValue;
-        lock (this.products) {
-            // check that every item has quantity in inventory
-            foreach (KeyValuePair<Product, int>  entry in basket.getItems()) {
-                checkAmount(entry.Key.ProductId, entry.Value);
-            }
-            // update inventory quantity and calculate basket price
-            totalValue = storeDiscountPolicy.cartTotalValue(basket);
-            foreach (KeyValuePair<Product, int>  entry in basket.getItems()) {
-                Product item = entry.Key;
-                int quantity = entry.Value;
-                int newQuan = (int)this.products.get(item) - quantity;
-                this.products.put(item, newQuan);
-                details.Append("\tItem: ").Append(item.ProductName).Append(" Price: ").Append(item.Price)
-                    .Append(" Quantity: ").Append(quantity).Append("\n");
-            }
-        }
-        return totalValue;
+    /// <summary>
+    /// supposed to calculate our basket.
+    /// </summary>
+    /// <param name="basket"></param>
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
+    public double calculate(Basket basket)
+    {
+        throw new NotImplementedException();
     }
 
 }

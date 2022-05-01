@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Permissions;
+using ConsoleApplication1.Permmissions;
 using ikvm.extensions;
 using java.lang;
 using java.util;

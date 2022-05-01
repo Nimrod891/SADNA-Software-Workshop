@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 using System.Collections.ObjectModel;
+using ConsoleApplication1.Permmissions;
 using ReviewPack;
 using java.util;
 using java.util.concurrent;
@@ -112,10 +113,10 @@ namespace Userpack {
                 lock (target.id < id ? permissions : target.permissions) {
 
                     // check this user has the permission to perform this action
-                    validatePermission(OwnerPermission.getInstance(store));
+                    validatePermission(new OwnerPermission(store));
 
                     // check if the target is already a manager at this store
-                    AbsPermission managerPermission = ManagerPermission.getInstance(store);
+                    AbsPermission managerPermission = new ManagerPermission(store);
                     if (target.havePermission(managerPermission))
                         throw new Exception("AlreadyManagerException: " +(userName));
 
@@ -137,11 +138,10 @@ namespace Userpack {
 
             lock (permissions) {
 
-                addPermission(OwnerPermission.getInstance(store));
-                addPermission(ManagerPermission.getInstance(store));
-                addPermission(EditPolicyPermission.getInstance(store));
-                addPermission(ManageInventoryPermission.getInstance(store));
-                addPermission(GetHistoryPermission.getInstance(store));
+                addPermission(new OwnerPermission(store));
+                addPermission(new ManagerPermission(store));
+                addPermission(new ManageInventoryPermission(store));
+                addPermission(new GetHistoryPermission(store));
             }
         }
 
@@ -151,7 +151,7 @@ namespace Userpack {
                 lock (target.id < id ? permissions : target.permissions) {
 
                     // check this user has the permission to perform this action
-                    AbsPermission ownerPermission = OwnerPermission.getInstance(store);
+                    AbsPermission ownerPermission = new OwnerPermission(store);
                     validatePermission(ownerPermission);
 
                     // check if the target is already an owner at this store
@@ -159,7 +159,7 @@ namespace Userpack {
                         throw new Exception("AlreadyOwnerException: " + (userName));
 
                     // check if the target is a manager that was appointed by someone else
-                    ManagerPermission managerPermission = ManagerPermission.getInstance(store);
+                    ManagerPermission managerPermission = new ManagerPermission(store);
                     if (target.havePermission(managerPermission))
                         validatePermission(AppointerPermission.getInstance(target, store));
 
@@ -195,11 +195,11 @@ namespace Userpack {
 
                 permissionsToRemove.Clear();
 
-                removePermission(OwnerPermission.getInstance(store));
-                removePermission(EditPolicyPermission.getInstance(store));
-                removePermission(ManageInventoryPermission.getInstance(store));
-                removePermission(GetHistoryPermission.getInstance(store));
-                removePermission(ManagerPermission.getInstance(store));
+                removePermission(new OwnerPermission(store));
+                //removePermission(EditPolicyPermission.getInstance(store));
+                removePermission(new ManageInventoryPermission(store));
+                removePermission(new GetHistoryPermission(store));
+                removePermission(new ManagerPermission(store));
             }
         }
 
@@ -209,44 +209,35 @@ namespace Userpack {
                 lock (target.id < id ? permissions : target.permissions) {
 
                     // check this user has the permission to perform this action
-                    validatePermission(AppointerPermission.getInstance(target, store));
+                    validatePermission(new AppointerPermission(target, store));
 
                     target.removeOwnerPermission(store);
 
                     // remove this user's permission to change the target's permissions
-                    removePermission(AppointerPermission.getInstance(target, store));
+                    removePermission(new AppointerPermission(target, store));
                 }
             }
         }
 
         public void addInventoryManagementPermission(Subscriber target, Store store) {
 
-            addPermissionToManager(target, store, ManageInventoryPermission.getInstance(store));
+            addPermissionToManager(target, store, new ManageInventoryPermission(store));
         }
 
         public void removeInventoryManagementPermission(Subscriber target, Store store) {
 
-            removePermissionFromManager(target, store, ManageInventoryPermission.getInstance(store));
+            removePermissionFromManager(target, store, new ManageInventoryPermission(store));
         }
 
-        public void addEditPolicyPermission(Subscriber target, Store store) {
-
-            addPermissionToManager(target, store, EditPolicyPermission.getInstance(store));
-        }
-
-        public void removeEditPolicyPermission(Subscriber target, Store store) {
-
-            removePermissionFromManager(target, store, EditPolicyPermission.getInstance(store));
-        }
-
+        
         public void addGetHistoryPermission(Subscriber target, Store store) {
 
-            addPermissionToManager(target, store, GetHistoryPermission.getInstance(store));
+            addPermissionToManager(target, store,new GetHistoryPermission(store));
         }
 
         public void removeGetHistoryPermission(Subscriber target, Store store) {
 
-            removePermissionFromManager(target, store, GetHistoryPermission.getInstance(store));
+            removePermissionFromManager(target, store, new GetHistoryPermission(store));
         }
 
        public void addPermissionToManager(Subscriber target, Store store, AbsPermission permission) {
@@ -257,7 +248,7 @@ namespace Userpack {
                     // check this user has the permission to perform this action
                     validatePermission(AppointerPermission.getInstance(target, store));
 
-                    if (!target.havePermission(ManagerPermission.getInstance(store)))
+                    if (!target.havePermission(new ManagerPermission(store)))
                         throw new Exception("TargetIsNotManagerException:  "+ "username : " +target.getUserName()+  ", store: " + store.getName());
 
                     // add the permission to the target (if he doesn't already have it)
@@ -274,7 +265,7 @@ namespace Userpack {
                     // check this user has the permission to perform this action
                     validatePermission(AppointerPermission.getInstance(target, store));
 
-                    if (target.havePermission(OwnerPermission.getInstance(store)))
+                    if (target.havePermission(new OwnerPermission(store)))
                         throw new Exception("TargetIsNotOwnerException:  "+ "username : " +target.getUserName()+  ", store: " + store.getName());
 
                     target.removePermission(permission);
@@ -285,7 +276,7 @@ namespace Userpack {
         public int addStoreItem(Store store, string itemName, string category, string subCategory, int quantity, double price) {
 
             // check this user has the permission to perform this action
-            validatePermission(ManageInventoryPermission.getInstance(store));
+            validatePermission(new ManageInventoryPermission(store));
 
             return store.addItem(itemName, price, category, subCategory, quantity);
         }
@@ -293,7 +284,7 @@ namespace Userpack {
         public void removeStoreItem(Store store, int itemId) {
 
             // check this user has the permission to perform this action
-            validatePermission(ManageInventoryPermission.getInstance(store));
+            validatePermission(new ManageInventoryPermission(store));
 
             store.removeItem(itemId);
         }
@@ -301,15 +292,15 @@ namespace Userpack {
         public void updateStoreItem(Store store, int itemId, string newSubCategory, int newQuantity, double newPrice) {
 
             // check this user has the permission to perform this action
-            validatePermission(ManageInventoryPermission.getInstance(store));
+            validatePermission(new ManageInventoryPermission(store));
 
-            store.changeItem(itemId, newSubCategory, newQuantity, newPrice);
+            store.changeItem(itemId,  newQuantity, newPrice);
         }
 
         public Collection<Store> getAllStores(Collection<Store> stores) {
 
             // check this user has the permission to perform this action
-            validatePermission(AdminPermission.getInstance());
+            validatePermission(new AdminPermission());
 
             return stores;
         }
@@ -317,8 +308,8 @@ namespace Userpack {
         public Set getStoreItems(Store store) {
 
             // check this user has the permission to perform this action
-            var v = ManagerPermission.getInstance(store);
-            var v2 = AdminPermission.getInstance();
+            var v = new ManagerPermission(store);
+            var v2 = new AdminPermission();
             var a = new ArrayList
             {
                 v,
@@ -335,10 +326,10 @@ namespace Userpack {
 
                 StringBuilder result = new StringBuilder();
 
-                AbsStorePermission ownerPermission = OwnerPermission.getInstance(store);
-                AbsStorePermission managerPermission = ManagerPermission.getInstance(store);
-                AbsStorePermission manageInventoryPermission = ManageInventoryPermission.getInstance(store);
-                AbsStorePermission getHistoryPermission = GetHistoryPermission.getInstance(store);
+                AbsStorePermission ownerPermission = new OwnerPermission(store);
+                AbsStorePermission managerPermission = new ManagerPermission(store);
+                AbsStorePermission manageInventoryPermission = new ManageInventoryPermission(store);
+                AbsStorePermission getHistoryPermission = new GetHistoryPermission(store);
                 //Permission editPolicyPermission = EditPolicyPermission.getInstance(store);
 
                 if (havePermission(ownerPermission))
@@ -357,23 +348,23 @@ namespace Userpack {
         }
 
         public ArrayList getEventLog(ArrayList log) { // arraylist <string>
-
-            // check this user has the permission to perform this action
-            validatePermission(AdminPermission.getInstance());
-
-            return log;
+            throw new NotImplementedException();
+            // validatePermission(AdminPermission.getInstance());
+            //
+            // return log;
         }
 
         public ArrayList getSalesHistoryByStore(Store store) { // arraylist <string>
-            var v = AdminPermission.getInstance();
-            var v2 = GetHistoryPermission.getInstance(store);
-            var a = new ArrayList();
-            a.Add(v);
-            a.Add(v2);
-
-            validateAtLeastOnePermission(a); //GetHistoryPermission.getInstance(store));
-
-            return store.getPurchaseHistory();
+            throw new NotImplementedException();
+            // var v = AdminPermission.getInstance();
+            // var v2 = GetHistoryPermission.getInstance(store);
+            // var a = new ArrayList();
+            // a.Add(v);
+            // a.Add(v2);
+            //
+            // validateAtLeastOnePermission(a); //GetHistoryPermission.getInstance(store));
+            //
+            // return store.getPurchaseHistory();
         }
 
         public ArrayList getPurchaseHistory() { // arraylist <string>
@@ -396,62 +387,7 @@ namespace Userpack {
            // store.notifyItemOpinion(review1);
 
         }
-
-        /*public void subscribe(Store store) {
-            store.subscribe(this);
-        }*/
-
-        /*public void unsubscribe(Store store) {
-            store.unsubscribe(this);
-
-        }*/
-
-        //todo: should we return notifications? hot to connect it to the GUI?
-        //    public PurchaseNotification notifyObserverPurchase(PurchaseNotification notification) {
-        //        //todo: decide if to postpone the notification
-        //        return notification;
-        //    }
-        //
-        //    public StoreStatusNotification notifyObserverStoreStatus(StoreStatusNotification notification) {
-        //        //todo: decide if to postpone the notification
-        //        return notification;
-        //    }
-        //
-        //    public ItemReviewNotification notifyObserverItemReview(ItemReviewNotification notification) {
-        //        //todo: decide if to postpone the notification
-        //        return notification;
-        //    }
-        //
-        //    public void notifyObserverLotteryStatus() {
-        //        //todo: implement
-        //
-        //    }
-        //
-        //    public MessageNotification notifyObserverMessage(MessageNotification notification){
-        //        //todo: implement
-        //        return notification;
-        //    }
-        //
-        //    public SubscriberRemoveNotification notifyObserverSubscriberRemove(SubscriberRemoveNotification notification){
-        //        //todo: implement
-        //        return notification;
-        //    }
-
-        /*public Notification notifyNotification(Notification notification) {
-            //todo: implement
-            return notification;
-        }*/
-
-        /*public ArrayList<Notification> checkPendingNotifications() {
-            ArrayList<Notification> collection = new ArrayList<>();
-            foreach (Notification n in this.notifications) {
-                if (n.isShown() == false) {
-                    collection.Add(n);
-                    n.setShown(true);
-                }
-            }
-            return collection;
-        }*/
+        
         
     }
 }
