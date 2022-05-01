@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using java.util;
-using ReviewPack;
+
 
 namespace StorePack
 {
@@ -78,10 +78,10 @@ namespace StorePack
             return Opened;
         }
 
-        public void addReview(Review review)
-        {
-            reviews.add(review);
-        }
+        // public void addReview(Review review)
+        // {
+        //     reviews.add(review);
+        // }
 
         public Collection getReviews()
         {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Collections;
 using System.Collections.ObjectModel;
 using ConsoleApplication1.Permmissions;
-using ReviewPack;
+
 using java.util;
 using java.util.concurrent;
 using ArrayList = System.Collections.ArrayList;
@@ -372,21 +372,21 @@ namespace Userpack {
             return new ArrayList(purchaseHistory);
         }
 
-        public void writeOpinionOnProduct(Store store, int itemId, string rev) {
-
-            if (rev == null || rev.Trim().Equals(""))
-                throw new Exception("WrongReviewException: Review can't be empty or null");
-
-            var product = store.searchItemById(itemId);
-            var p = (ArrayList)itemsPurchased.get(store);
-            if (p != null && !p.Contains(product))
-                throw new Exception("ItemNotPurchasedException:   Item ID: " + itemId + " item name: " + product.ProductName);
-
-            var review = new Review(this, store, product, rev);
-            product.addReview(review);
-           // store.notifyItemOpinion(review1);
-
-        }
+        // public void writeOpinionOnProduct(Store store, int itemId, string rev) {
+        //
+        //     if (rev == null || rev.Trim().Equals(""))
+        //         throw new Exception("WrongReviewException: Review can't be empty or null");
+        //
+        //     var product = store.searchItemById(itemId);
+        //     var p = (ArrayList)itemsPurchased.get(store);
+        //     if (p != null && !p.Contains(product))
+        //         throw new Exception("ItemNotPurchasedException:   Item ID: " + itemId + " item name: " + product.ProductName);
+        //
+        //     var review = new Review(this, store, product, rev);
+        //     product.addReview(review);
+        //    // store.notifyItemOpinion(review1);
+        //
+        // }
         
         
     }

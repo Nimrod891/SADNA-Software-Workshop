@@ -128,7 +128,6 @@
         <Compile Include="src\Permmissions\ManageInventoryPermission.cs" />
         <Compile Include="src\Permmissions\ManagerPermission.cs" />
         <Compile Include="src\Permmissions\OwnerPermission.cs" />
-        <Compile Include="src\review\Review.cs" />
         <Compile Include="src\Security\verification.cs" />
         <Compile Include="src\Service\IMarketSystemService.cs" />
         <Compile Include="src\Service\MarketSystemServiceImpl.cs" />
