@@ -160,6 +160,7 @@
         <Compile Include="Tests\externalServices\PaymentSystemTest.cs" />
         <Compile Include="Tests\policies\DiscountPolicyTest.cs" />
         <Compile Include="Tests\policies\PurchasePolicyTest.cs" />
+        <Compile Include="Tests\service\MarketSystemServiceImplTest.cs" />
         <Compile Include="Tests\service\TradingSystemImplTest.cs" />
         <Compile Include="Tests\store\InventoryTest.cs" />
         <Compile Include="Tests\store\StoreTest.cs" />
