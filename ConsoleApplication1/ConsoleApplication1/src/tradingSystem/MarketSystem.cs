@@ -33,13 +33,7 @@ namespace tradingSystem
 			if (vistor == null) throw new Exception(connectionId);
 			return vistor;
 		}
-		
-		public Vistor getConnectionIdByUsername(string username)  {
-			
-			if (vistor == null) throw new Exception(connectionId);
-			return vistor;
-		}
-		
+
 		public Subscriber getSubscriberByUserName(String userName) {
 			Subscriber subscriber = subscribers[userName];
 			if (subscriber == null) throw new Exception(userName);
@@ -137,23 +131,7 @@ namespace tradingSystem
 				throw new Exception(storeId.ToString());
 			 return store;
 		 }
-		 
-		//  public Collection getItems(string keyWord, string productName, string category, string subCategory,
-		// 	 double ratingItem, double ratingStore, double maxPrice, double minPrice) {
-		//
-		// 	 ICollection<string> items = new LinkedList<string>();
-		// 	 ICollection<Product> itemsToAdd;
-		//
-		// 	 foreach (Store store in  stores.Values)
-		// 	 {
-		// 		 itemsToAdd = store.searchAndFilter(keyWord, productName, category, ratingItem, ratingStore, maxPrice, minPrice);
-		// 		 foreach (Product p in itemsToAdd)
-		// 		 items.Add("store: " + store.getId() + ", " + p.ToString());
-		// 	 }
-		//
-		//
-		// 	 return items;
-		// // }
+
 		
 
 
