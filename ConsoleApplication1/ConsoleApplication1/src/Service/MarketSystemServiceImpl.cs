@@ -71,7 +71,7 @@ namespace Service.TradingSystemServiceImpl
         {
             throw new System.NotImplementedException();
         }
-
+ 
         public int openNewStore(string username, string newStoreName)
         {
             throw new System.NotImplementedException();
