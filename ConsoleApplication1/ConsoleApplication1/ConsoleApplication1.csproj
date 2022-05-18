@@ -128,7 +128,7 @@
         <Compile Include="src\Permmissions\ManageInventoryPermission.cs" />
         <Compile Include="src\Permmissions\ManagerPermission.cs" />
         <Compile Include="src\Permmissions\OwnerPermission.cs" />
-        <Compile Include="src\Security\verification.cs" />
+        <Compile Include="src\Security\UserSecurity.cs" />
         <Compile Include="src\Service\IMarketSystemService.cs" />
         <Compile Include="src\Service\MarketSystemServiceImpl.cs" />
         <Compile Include="src\Store\Inventory.cs" />
@@ -153,20 +153,6 @@
         <Compile Include="Tests\service\TradingSystemImplTest.cs" />
         <Compile Include="Tests\store\InventoryTest.cs" />
         <Compile Include="Tests\store\StoreTest.cs" />
-        <Compile Include="Tests\tradingSystem\TradingSystemServiceTest.cs" />
-        <Compile Include="Tests\tradingSystem\TradingSystemTest.cs" />
-        <Compile Include="Tests\user\AdminPermissionTest.cs" />
-        <Compile Include="Tests\user\AppointerPermissionTest.cs" />
-        <Compile Include="Tests\user\BasketTest.cs" />
-        <Compile Include="Tests\user\EditPolicyPermissionTest.cs" />
-        <Compile Include="Tests\user\GetHistoryPermissionTest.cs" />
-        <Compile Include="Tests\user\ManageInventoryPermissionTest.cs" />
-        <Compile Include="Tests\user\ManagerPermissionTest.cs" />
-        <Compile Include="Tests\user\OwnerPermissionTest.cs" />
-        <Compile Include="Tests\user\PermissionTest.cs" />
-        <Compile Include="Tests\user\SubscriberConcurrencyTest.cs" />
-        <Compile Include="Tests\user\SubscriberTest.cs" />
-        <Compile Include="Tests\user\UserTest.cs" />
     </ItemGroup>
     <ItemGroup>
       <Content Include="src\obj\Debug\ConsoleApp4.csproj.CoreCompileInputs.cache" />

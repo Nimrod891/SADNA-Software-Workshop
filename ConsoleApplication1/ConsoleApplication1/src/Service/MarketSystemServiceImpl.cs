@@ -19,12 +19,12 @@ namespace Service.TradingSystemServiceImpl
 
         public int connect()
         {
-            throw new System.NotImplementedException();
+            return market.connect();
         }
 
         public void exit(int connectionid)
         {
-            throw new System.NotImplementedException();
+            market.exit(connectionid);
         }
 
         public void register(string userName, string password)

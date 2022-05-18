@@ -1,0 +1,153 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "PresentationLayer/1.0.0": {
+        "dependencies": {
+          "ConsoleApplication1": "1.0.0"
+        },
+        "runtime": {
+          "PresentationLayer.dll": {}
+        }
+      },
+      "ConsoleApplication1/1.0.0": {
+        "runtime": {
+          "ConsoleApplication1.exe": {}
+        }
+      },
+      "log4net/2.0.14.0": {
+        "runtime": {
+          "log4net.dll": {
+            "assemblyVersion": "2.0.14.0",
+            "fileVersion": "2.0.14.0"
+          }
+        }
+      },
+      "IKVM.OpenJDK.Core/7.2.4630.5": {
+        "runtime": {
+          "IKVM.OpenJDK.Core.dll": {
+            "assemblyVersion": "7.2.4630.5",
+            "fileVersion": "7.2.4630.5"
+          }
+        }
+      },
+      "IKVM.Runtime/7.2.4630.5": {
+        "runtime": {
+          "IKVM.Runtime.dll": {
+            "assemblyVersion": "7.2.4630.5",
+            "fileVersion": "7.2.4630.5"
+          }
+        }
+      },
+      "IKVM.OpenJDK.Util/7.2.4630.5": {
+        "runtime": {
+          "IKVM.OpenJDK.Util.dll": {
+            "assemblyVersion": "7.2.4630.5",
+            "fileVersion": "7.2.4630.5"
+          }
+        }
+      },
+      "IKVM.OpenJDK.Security/7.2.4630.5": {
+        "runtime": {
+          "IKVM.OpenJDK.Security.dll": {
+            "assemblyVersion": "7.2.4630.5",
+            "fileVersion": "7.2.4630.5"
+          }
+        }
+      },
+      "IKVM.OpenJDK.Text/7.2.4630.5": {
+        "runtime": {
+          "IKVM.OpenJDK.Text.dll": {
+            "assemblyVersion": "7.2.4630.5",
+            "fileVersion": "7.2.4630.5"
+          }
+        }
+      },
+      "IKVM.OpenJDK.XML.API/7.2.4630.5": {
+        "runtime": {
+          "IKVM.OpenJDK.XML.API.dll": {
+            "assemblyVersion": "7.2.4630.5",
+            "fileVersion": "7.2.4630.5"
+          }
+        }
+      },
+      "IKVM.OpenJDK.SwingAWT/7.2.4630.5": {
+        "runtime": {
+          "IKVM.OpenJDK.SwingAWT.dll": {
+            "assemblyVersion": "7.2.4630.5",
+            "fileVersion": "7.2.4630.5"
+          }
+        }
+      },
+      "IKVM.OpenJDK.Charsets/7.2.4630.5": {
+        "runtime": {
+          "IKVM.OpenJDK.Charsets.dll": {
+            "assemblyVersion": "7.2.4630.5",
+            "fileVersion": "7.2.4630.5"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PresentationLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ConsoleApplication1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "log4net/2.0.14.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IKVM.OpenJDK.Core/7.2.4630.5": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IKVM.Runtime/7.2.4630.5": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IKVM.OpenJDK.Util/7.2.4630.5": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IKVM.OpenJDK.Security/7.2.4630.5": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IKVM.OpenJDK.Text/7.2.4630.5": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IKVM.OpenJDK.XML.API/7.2.4630.5": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IKVM.OpenJDK.SwingAWT/7.2.4630.5": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IKVM.OpenJDK.Charsets/7.2.4630.5": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
