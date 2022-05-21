@@ -172,3 +172,4 @@ C:\Users\zarfa\OneDrive\תמונות\מסמכים\GithubProjects\SADNA-Software-
 C:\Users\zarfa\OneDrive\תמונות\מסמכים\GithubProjects\SADNA-Software-Workshop\ConsoleApplication1\ConsoleApplication1\bin\Debug\xunit.core.xml
 C:\Users\zarfa\OneDrive\תמונות\מסמכים\GithubProjects\SADNA-Software-Workshop\ConsoleApplication1\ConsoleApplication1\bin\Debug\xunit.execution.desktop.xml
 C:\Users\zarfa\OneDrive\תמונות\מסמכים\GithubProjects\SADNA-Software-Workshop\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.CopyComplete
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.SuggestedBindingRedirects.cache

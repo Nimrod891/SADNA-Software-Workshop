@@ -39,3 +39,44 @@ C:\Users\zarfa\OneDrive\תמונות\מסמכים\GithubProjects\SADNA-Software-
 C:\Users\zarfa\OneDrive\תמונות\מסמכים\GithubProjects\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\PresentationLayer.pdb
 C:\Users\zarfa\OneDrive\תמונות\מסמכים\GithubProjects\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\PresentationLayer.genruntimeconfig.cache
 C:\Users\zarfa\OneDrive\תמונות\מסמכים\GithubProjects\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\ref\PresentationLayer.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\NUnit3.TestAdapter.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\NUnit3.TestAdapter.pdb
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\nunit.engine.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\nunit.engine.api.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\nunit.engine.core.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\testcentric.engine.metadata.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\appsettings.json
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\PresentationLayer.exe
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\PresentationLayer.deps.json
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\PresentationLayer.runtimeconfig.json
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\PresentationLayer.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\PresentationLayer.pdb
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\ConsoleApplication1.exe
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\log4net.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\IKVM.OpenJDK.Core.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\IKVM.Runtime.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\IKVM.OpenJDK.Util.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\IKVM.OpenJDK.Security.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\IKVM.OpenJDK.Text.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\IKVM.OpenJDK.XML.API.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\IKVM.OpenJDK.SwingAWT.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\IKVM.OpenJDK.Charsets.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\ConsoleApplication1.pdb
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\ConsoleApplication1.exe.config
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\bin\Debug\net6.0\log4net.xml
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\PresentationLayer.csproj.AssemblyReference.cache
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\PresentationLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\PresentationLayer.AssemblyInfoInputs.cache
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\PresentationLayer.AssemblyInfo.cs
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\PresentationLayer.csproj.CoreCompileInputs.cache
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\PresentationLayer.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\scopedcss\bundle\PresentationLayer.styles.css
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\PresentationLayer.csproj.CopyComplete
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\PresentationLayer.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\refint\PresentationLayer.dll
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\PresentationLayer.pdb
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\PresentationLayer.genruntimeconfig.cache
+C:\Users\nimro\Documents\לימודים\סמסטר ו\סדנא\SADNA-Software-Workshop\ConsoleApplication1\PresentationLayer\obj\Debug\net6.0\ref\PresentationLayer.dll
