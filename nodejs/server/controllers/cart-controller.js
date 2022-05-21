@@ -10,7 +10,7 @@ async function buyCart(req, res) {
             console.log(item.product.id);
             await Stores.findOneAndUpdate(
                 { name: item.storeName },
-                { $inc: { 'products.$[p].inventory': 1 } }, /// need to fix inventory updating: "Cannot apply $inc to a value of non-numeric type"
+                { $inc: { 'products.$[p].inventory': 1 } }, ///FIXME need to fix inventory updating: "Cannot apply $inc to a value of non-numeric type"
                 { arrayFilters: [{ 'p.id': item.product.id }] }
             );
         }
