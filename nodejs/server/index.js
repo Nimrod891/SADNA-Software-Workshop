@@ -9,9 +9,9 @@ const myEmitter = new MyEmitter();
 
 //add listerner for the log event
 
-myEmitter.on('log', (msg)=>logsEvents(msg));
+myEmitter.on('log', (msg)=> logEvents(msg));
 
-setTimeout(()=>{
+setTimeout(() => {
     //emit event
     myEmitter.emit('log', 'Log event emitted!');
 
