@@ -1,0 +1,40 @@
+.root {
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  background-color: rgba(255, 255, 255, 0.3);
+  height: 450px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #0277BD;
+  font-weight: 700;
+  font-size: 40px;
+  padding: 10px 0;
+}
+
+.button {
+  outline: none;
+  color: white;
+  opacity: 0.7;
+}
+
+.text {
+  color: #0277BD;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 10px 0;
+  display: inline;
+  margin-right: 10px;
+}
