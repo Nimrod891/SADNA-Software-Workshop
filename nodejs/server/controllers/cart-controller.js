@@ -1,5 +1,5 @@
-const { Stores } = require('../models/stores');
-const { Users } = require('../models/users');
+const { Stores } = require('../models/stores-model');
+const { Users } = require('../models/users-model');
 
 async function buyCart(req, res) {
     try {

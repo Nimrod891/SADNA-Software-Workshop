@@ -1,6 +1,6 @@
 {
     "mongo": {
-        "url": "mongodb+srv://admin:admin@cluster0.q6ehp.mongodb.net/?retryWrites=true&w=majority"
+        "url": "mongodb+srv://admin:admin@cluster0.qluhr.mongodb.net/?retryWrites=true&w=majority"
     },
     "jwt": {
         "secret": "prd key"
