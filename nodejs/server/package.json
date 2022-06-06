@@ -6,6 +6,7 @@
     "scripts": {
         "start": "nodemon app.js",
         "run": "node app.js",
+        "a": "cross-env NODE_ENV=test node ./generate-test-data.js",
         "test": "cross-env NODE_ENV=test mocha"
     },
     "keywords": [],

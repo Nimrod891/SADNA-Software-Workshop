@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const { Users } = require('../models/users');
+const { UsersDao } = require('../dao/users-dao');
 const jwtConfig = config.get('jwt');
 
 const maxAge = 3 * 24 * 60 * 60; // 3 days
@@ -54,12 +54,14 @@ async function signup(req, res) {
             password: req.body.password,
             type: req.body.userType,
         };
-        const userExist = await Users.findOne({ user: user.user });
+        const usersDao = new UsersDao();
+        const userExist = await usersDao.findOneByUsername(user.user);
+
         if (userExist) {
             throw new Error('User already exist');
         }
 
-        const newUser = await Users.create(user);
+        const newUser = await usersDao.create(user);
         await res.status(201).json(newUser);
     } catch (err) {
         await res.status(500).json({
@@ -70,7 +72,8 @@ async function signup(req, res) {
 }
 
 async function tryLogin(username, password) {
-    const user = await Users.findOne({ user: username, password });
+    const usersDao = new UsersDao();
+    const user = await usersDao.findByLoginData(username, password);
 
     if (!user) {
         return new Error('Auth error');
