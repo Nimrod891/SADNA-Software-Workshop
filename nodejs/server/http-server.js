@@ -20,7 +20,8 @@ app.use('/products', productsRoutes);
 app.use('/cart', cartRoutes);
 
 (async function () {
-    await connectToDb();
+    const con = new connectToDb();
+    await con.connectToDb();
 })();
 
 module.exports = app;

@@ -5,8 +5,9 @@ const { Stores } = require('../models/stores-model');
 describe('Products DAO', () => {
     before(async function () {
         this.timeout(60000);
-
-        const { connectToDb } = require('../dao/connect-to-db');
+        
+        const con = new connectToDb();  
+        const { connectToDb } = require('../dao/connect-to-db').connectToDb/*()*/;
         await connectToDb();
     });
 
