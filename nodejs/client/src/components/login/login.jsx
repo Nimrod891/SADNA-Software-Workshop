@@ -54,7 +54,7 @@ const Login = () => {
                 content: (
                     <>
                         <Typography sx={{ mt: 2 }}>
-                            Wrong username or password
+                            Missing username or password
                         </Typography>
                         <Button
                             sx={{ mt: 2 }}
