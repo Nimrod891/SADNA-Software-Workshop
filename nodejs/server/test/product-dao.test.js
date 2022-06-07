@@ -36,5 +36,11 @@ describe('Products DAO', () => {
         expect(newProduct.inventory).to.eq(10);
     });
 
-    // after()
+    after(async function () {
+        // 1. delete products added to DB (all in '_storeId')
+
+        // 2. delete store _storeId from DB
+
+        // 3. disconnect from DB (the opposite of line 9: const { connectToDb } = require('../dao/connect-to-db');)
+    });
 });
