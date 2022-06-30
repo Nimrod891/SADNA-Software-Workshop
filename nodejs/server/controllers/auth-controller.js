@@ -42,9 +42,11 @@ async function logout(req, res) {
     res.cookie('jwt', '', {
         maxAge: 1,
     });
+    console.log(req.body +" has logged out");
     res.status(200).json({
         logged_out: true,
     });
+    
 }
 
 async function signup(req, res) {
@@ -63,6 +65,7 @@ async function signup(req, res) {
 
         const newUser = await usersDao.create(user);
         await res.status(201).json(newUser);
+        console.log(req.body.username +" has signed up.");
     } catch (err) {
         await res.status(500).json({
             message: err.message,
@@ -74,11 +77,10 @@ async function signup(req, res) {
 async function tryLogin(username, password) {
     const usersDao = new UsersDao();
     const user = await usersDao.findByLoginData(username, password);
-
     if (!user) {
         return new Error('Auth error');
     }
-
+    console.log(username +" has logged in");
     return user;
 }
 
